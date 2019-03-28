@@ -27,107 +27,107 @@ var (
 	_ = event.NewSubscription
 )
 
-// EthcontractsABI is the input ABI used to generate the binding from.
-const EthcontractsABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"INITIAL_SUPPLY\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isPauser\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"mintAmount\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"address\"}],\"name\":\"allowed\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renouncePauser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"addPauser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"lastMintedAtBlock\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"mintingInterval\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"},{\"name\":\"_spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"name\":\"remaining\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"quorumRegisteredBallots\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_nodes\",\"type\":\"address[72]\"},{\"indexed\":false,\"name\":\"_mintAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_blockHeight\",\"type\":\"uint256\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"PauserAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"PauserRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_from\",\"type\":\"address\"},{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_spender\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_nodes\",\"type\":\"address[72]\"},{\"name\":\"_hash\",\"type\":\"bytes32\"},{\"name\":\"signature1\",\"type\":\"bytes\"},{\"name\":\"signature2\",\"type\":\"bytes\"},{\"name\":\"signature3\",\"type\":\"bytes\"},{\"name\":\"signature4\",\"type\":\"bytes\"},{\"name\":\"signature5\",\"type\":\"bytes\"},{\"name\":\"signature6\",\"type\":\"bytes\"}],\"name\":\"mint\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_addr\",\"type\":\"address\"}],\"name\":\"setChainpointRegistry\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"hash\",\"type\":\"bytes32\"},{\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"recover\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"hash\",\"type\":\"bytes32\"}],\"name\":\"toEthSignedMessageHash\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
+// TNTABI is the input ABI used to generate the binding from.
+const TNTABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"INITIAL_SUPPLY\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isPauser\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"mintAmount\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"address\"}],\"name\":\"allowed\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renouncePauser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"addPauser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"lastMintedAtBlock\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"mintingInterval\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"},{\"name\":\"_spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"name\":\"remaining\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"quorumRegisteredBallots\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_nodes\",\"type\":\"address[72]\"},{\"indexed\":false,\"name\":\"_mintAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_blockHeight\",\"type\":\"uint256\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"PauserAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"PauserRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_from\",\"type\":\"address\"},{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_spender\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_nodes\",\"type\":\"address[72]\"},{\"name\":\"_hash\",\"type\":\"bytes32\"},{\"name\":\"signature1\",\"type\":\"bytes\"},{\"name\":\"signature2\",\"type\":\"bytes\"},{\"name\":\"signature3\",\"type\":\"bytes\"},{\"name\":\"signature4\",\"type\":\"bytes\"},{\"name\":\"signature5\",\"type\":\"bytes\"},{\"name\":\"signature6\",\"type\":\"bytes\"}],\"name\":\"mint\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_addr\",\"type\":\"address\"}],\"name\":\"setChainpointRegistry\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"hash\",\"type\":\"bytes32\"},{\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"recover\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"hash\",\"type\":\"bytes32\"}],\"name\":\"toEthSignedMessageHash\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}]"
 
-// Ethcontracts is an auto generated Go binding around an Ethereum contract.
-type Ethcontracts struct {
-	EthcontractsCaller     // Read-only binding to the contract
-	EthcontractsTransactor // Write-only binding to the contract
-	EthcontractsFilterer   // Log filterer for contract events
+// TNT is an auto generated Go binding around an Ethereum contract.
+type TNT struct {
+	TNTCaller     // Read-only binding to the contract
+	TNTTransactor // Write-only binding to the contract
+	TNTFilterer   // Log filterer for contract events
 }
 
-// EthcontractsCaller is an auto generated read-only Go binding around an Ethereum contract.
-type EthcontractsCaller struct {
+// TNTCaller is an auto generated read-only Go binding around an Ethereum contract.
+type TNTCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// EthcontractsTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type EthcontractsTransactor struct {
+// TNTTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type TNTTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// EthcontractsFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type EthcontractsFilterer struct {
+// TNTFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type TNTFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// EthcontractsSession is an auto generated Go binding around an Ethereum contract,
+// TNTSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type EthcontractsSession struct {
-	Contract     *Ethcontracts     // Generic contract binding to set the session for
+type TNTSession struct {
+	Contract     *TNT              // Generic contract binding to set the session for
 	CallOpts     bind.CallOpts     // Call options to use throughout this session
 	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// EthcontractsCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// TNTCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
-type EthcontractsCallerSession struct {
-	Contract *EthcontractsCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts       // Call options to use throughout this session
+type TNTCallerSession struct {
+	Contract *TNTCaller    // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts // Call options to use throughout this session
 }
 
-// EthcontractsTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// TNTTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
-type EthcontractsTransactorSession struct {
-	Contract     *EthcontractsTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts       // Transaction auth options to use throughout this session
+type TNTTransactorSession struct {
+	Contract     *TNTTransactor    // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// EthcontractsRaw is an auto generated low-level Go binding around an Ethereum contract.
-type EthcontractsRaw struct {
-	Contract *Ethcontracts // Generic contract binding to access the raw methods on
+// TNTRaw is an auto generated low-level Go binding around an Ethereum contract.
+type TNTRaw struct {
+	Contract *TNT // Generic contract binding to access the raw methods on
 }
 
-// EthcontractsCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type EthcontractsCallerRaw struct {
-	Contract *EthcontractsCaller // Generic read-only contract binding to access the raw methods on
+// TNTCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type TNTCallerRaw struct {
+	Contract *TNTCaller // Generic read-only contract binding to access the raw methods on
 }
 
-// EthcontractsTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type EthcontractsTransactorRaw struct {
-	Contract *EthcontractsTransactor // Generic write-only contract binding to access the raw methods on
+// TNTTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type TNTTransactorRaw struct {
+	Contract *TNTTransactor // Generic write-only contract binding to access the raw methods on
 }
 
-// NewEthcontracts creates a new instance of Ethcontracts, bound to a specific deployed contract.
-func NewEthcontracts(address common.Address, backend bind.ContractBackend) (*Ethcontracts, error) {
-	contract, err := bindEthcontracts(address, backend, backend, backend)
+// NewTNT creates a new instance of TNT, bound to a specific deployed contract.
+func NewTNT(address common.Address, backend bind.ContractBackend) (*TNT, error) {
+	contract, err := bindTNT(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &Ethcontracts{EthcontractsCaller: EthcontractsCaller{contract: contract}, EthcontractsTransactor: EthcontractsTransactor{contract: contract}, EthcontractsFilterer: EthcontractsFilterer{contract: contract}}, nil
+	return &TNT{TNTCaller: TNTCaller{contract: contract}, TNTTransactor: TNTTransactor{contract: contract}, TNTFilterer: TNTFilterer{contract: contract}}, nil
 }
 
-// NewEthcontractsCaller creates a new read-only instance of Ethcontracts, bound to a specific deployed contract.
-func NewEthcontractsCaller(address common.Address, caller bind.ContractCaller) (*EthcontractsCaller, error) {
-	contract, err := bindEthcontracts(address, caller, nil, nil)
+// NewTNTCaller creates a new read-only instance of TNT, bound to a specific deployed contract.
+func NewTNTCaller(address common.Address, caller bind.ContractCaller) (*TNTCaller, error) {
+	contract, err := bindTNT(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsCaller{contract: contract}, nil
+	return &TNTCaller{contract: contract}, nil
 }
 
-// NewEthcontractsTransactor creates a new write-only instance of Ethcontracts, bound to a specific deployed contract.
-func NewEthcontractsTransactor(address common.Address, transactor bind.ContractTransactor) (*EthcontractsTransactor, error) {
-	contract, err := bindEthcontracts(address, nil, transactor, nil)
+// NewTNTTransactor creates a new write-only instance of TNT, bound to a specific deployed contract.
+func NewTNTTransactor(address common.Address, transactor bind.ContractTransactor) (*TNTTransactor, error) {
+	contract, err := bindTNT(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsTransactor{contract: contract}, nil
+	return &TNTTransactor{contract: contract}, nil
 }
 
-// NewEthcontractsFilterer creates a new log filterer instance of Ethcontracts, bound to a specific deployed contract.
-func NewEthcontractsFilterer(address common.Address, filterer bind.ContractFilterer) (*EthcontractsFilterer, error) {
-	contract, err := bindEthcontracts(address, nil, nil, filterer)
+// NewTNTFilterer creates a new log filterer instance of TNT, bound to a specific deployed contract.
+func NewTNTFilterer(address common.Address, filterer bind.ContractFilterer) (*TNTFilterer, error) {
+	contract, err := bindTNT(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsFilterer{contract: contract}, nil
+	return &TNTFilterer{contract: contract}, nil
 }
 
-// bindEthcontracts binds a generic wrapper to an already deployed contract.
-func bindEthcontracts(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(EthcontractsABI))
+// bindTNT binds a generic wrapper to an already deployed contract.
+func bindTNT(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(TNTABI))
 	if err != nil {
 		return nil, err
 	}
@@ -138,742 +138,742 @@ func bindEthcontracts(address common.Address, caller bind.ContractCaller, transa
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Ethcontracts *EthcontractsRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
-	return _Ethcontracts.Contract.EthcontractsCaller.contract.Call(opts, result, method, params...)
+func (_TNT *TNTRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _TNT.Contract.TNTCaller.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Ethcontracts *EthcontractsRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.EthcontractsTransactor.contract.Transfer(opts)
+func (_TNT *TNTRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TNT.Contract.TNTTransactor.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Ethcontracts *EthcontractsRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.EthcontractsTransactor.contract.Transact(opts, method, params...)
+func (_TNT *TNTRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _TNT.Contract.TNTTransactor.contract.Transact(opts, method, params...)
 }
 
 // Call invokes the (constant) contract method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Ethcontracts *EthcontractsCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
-	return _Ethcontracts.Contract.contract.Call(opts, result, method, params...)
+func (_TNT *TNTCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _TNT.Contract.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Ethcontracts *EthcontractsTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.contract.Transfer(opts)
+func (_TNT *TNTTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TNT.Contract.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Ethcontracts *EthcontractsTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.contract.Transact(opts, method, params...)
+func (_TNT *TNTTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _TNT.Contract.contract.Transact(opts, method, params...)
 }
 
 // INITIALSUPPLY is a free data retrieval call binding the contract method 0x2ff2e9dc.
 //
 // Solidity: function INITIAL_SUPPLY() constant returns(uint256)
-func (_Ethcontracts *EthcontractsCaller) INITIALSUPPLY(opts *bind.CallOpts) (*big.Int, error) {
+func (_TNT *TNTCaller) INITIALSUPPLY(opts *bind.CallOpts) (*big.Int, error) {
 	var (
 		ret0 = new(*big.Int)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "INITIAL_SUPPLY")
+	err := _TNT.contract.Call(opts, out, "INITIAL_SUPPLY")
 	return *ret0, err
 }
 
 // INITIALSUPPLY is a free data retrieval call binding the contract method 0x2ff2e9dc.
 //
 // Solidity: function INITIAL_SUPPLY() constant returns(uint256)
-func (_Ethcontracts *EthcontractsSession) INITIALSUPPLY() (*big.Int, error) {
-	return _Ethcontracts.Contract.INITIALSUPPLY(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) INITIALSUPPLY() (*big.Int, error) {
+	return _TNT.Contract.INITIALSUPPLY(&_TNT.CallOpts)
 }
 
 // INITIALSUPPLY is a free data retrieval call binding the contract method 0x2ff2e9dc.
 //
 // Solidity: function INITIAL_SUPPLY() constant returns(uint256)
-func (_Ethcontracts *EthcontractsCallerSession) INITIALSUPPLY() (*big.Int, error) {
-	return _Ethcontracts.Contract.INITIALSUPPLY(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) INITIALSUPPLY() (*big.Int, error) {
+	return _TNT.Contract.INITIALSUPPLY(&_TNT.CallOpts)
 }
 
 // Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
 //
 // Solidity: function allowance(address _owner, address _spender) constant returns(uint256 remaining)
-func (_Ethcontracts *EthcontractsCaller) Allowance(opts *bind.CallOpts, _owner common.Address, _spender common.Address) (*big.Int, error) {
+func (_TNT *TNTCaller) Allowance(opts *bind.CallOpts, _owner common.Address, _spender common.Address) (*big.Int, error) {
 	var (
 		ret0 = new(*big.Int)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "allowance", _owner, _spender)
+	err := _TNT.contract.Call(opts, out, "allowance", _owner, _spender)
 	return *ret0, err
 }
 
 // Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
 //
 // Solidity: function allowance(address _owner, address _spender) constant returns(uint256 remaining)
-func (_Ethcontracts *EthcontractsSession) Allowance(_owner common.Address, _spender common.Address) (*big.Int, error) {
-	return _Ethcontracts.Contract.Allowance(&_Ethcontracts.CallOpts, _owner, _spender)
+func (_TNT *TNTSession) Allowance(_owner common.Address, _spender common.Address) (*big.Int, error) {
+	return _TNT.Contract.Allowance(&_TNT.CallOpts, _owner, _spender)
 }
 
 // Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
 //
 // Solidity: function allowance(address _owner, address _spender) constant returns(uint256 remaining)
-func (_Ethcontracts *EthcontractsCallerSession) Allowance(_owner common.Address, _spender common.Address) (*big.Int, error) {
-	return _Ethcontracts.Contract.Allowance(&_Ethcontracts.CallOpts, _owner, _spender)
+func (_TNT *TNTCallerSession) Allowance(_owner common.Address, _spender common.Address) (*big.Int, error) {
+	return _TNT.Contract.Allowance(&_TNT.CallOpts, _owner, _spender)
 }
 
 // Allowed is a free data retrieval call binding the contract method 0x5c658165.
 //
 // Solidity: function allowed(address , address ) constant returns(uint256)
-func (_Ethcontracts *EthcontractsCaller) Allowed(opts *bind.CallOpts, arg0 common.Address, arg1 common.Address) (*big.Int, error) {
+func (_TNT *TNTCaller) Allowed(opts *bind.CallOpts, arg0 common.Address, arg1 common.Address) (*big.Int, error) {
 	var (
 		ret0 = new(*big.Int)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "allowed", arg0, arg1)
+	err := _TNT.contract.Call(opts, out, "allowed", arg0, arg1)
 	return *ret0, err
 }
 
 // Allowed is a free data retrieval call binding the contract method 0x5c658165.
 //
 // Solidity: function allowed(address , address ) constant returns(uint256)
-func (_Ethcontracts *EthcontractsSession) Allowed(arg0 common.Address, arg1 common.Address) (*big.Int, error) {
-	return _Ethcontracts.Contract.Allowed(&_Ethcontracts.CallOpts, arg0, arg1)
+func (_TNT *TNTSession) Allowed(arg0 common.Address, arg1 common.Address) (*big.Int, error) {
+	return _TNT.Contract.Allowed(&_TNT.CallOpts, arg0, arg1)
 }
 
 // Allowed is a free data retrieval call binding the contract method 0x5c658165.
 //
 // Solidity: function allowed(address , address ) constant returns(uint256)
-func (_Ethcontracts *EthcontractsCallerSession) Allowed(arg0 common.Address, arg1 common.Address) (*big.Int, error) {
-	return _Ethcontracts.Contract.Allowed(&_Ethcontracts.CallOpts, arg0, arg1)
+func (_TNT *TNTCallerSession) Allowed(arg0 common.Address, arg1 common.Address) (*big.Int, error) {
+	return _TNT.Contract.Allowed(&_TNT.CallOpts, arg0, arg1)
 }
 
 // BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
 //
 // Solidity: function balanceOf(address _owner) constant returns(uint256 balance)
-func (_Ethcontracts *EthcontractsCaller) BalanceOf(opts *bind.CallOpts, _owner common.Address) (*big.Int, error) {
+func (_TNT *TNTCaller) BalanceOf(opts *bind.CallOpts, _owner common.Address) (*big.Int, error) {
 	var (
 		ret0 = new(*big.Int)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "balanceOf", _owner)
+	err := _TNT.contract.Call(opts, out, "balanceOf", _owner)
 	return *ret0, err
 }
 
 // BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
 //
 // Solidity: function balanceOf(address _owner) constant returns(uint256 balance)
-func (_Ethcontracts *EthcontractsSession) BalanceOf(_owner common.Address) (*big.Int, error) {
-	return _Ethcontracts.Contract.BalanceOf(&_Ethcontracts.CallOpts, _owner)
+func (_TNT *TNTSession) BalanceOf(_owner common.Address) (*big.Int, error) {
+	return _TNT.Contract.BalanceOf(&_TNT.CallOpts, _owner)
 }
 
 // BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
 //
 // Solidity: function balanceOf(address _owner) constant returns(uint256 balance)
-func (_Ethcontracts *EthcontractsCallerSession) BalanceOf(_owner common.Address) (*big.Int, error) {
-	return _Ethcontracts.Contract.BalanceOf(&_Ethcontracts.CallOpts, _owner)
+func (_TNT *TNTCallerSession) BalanceOf(_owner common.Address) (*big.Int, error) {
+	return _TNT.Contract.BalanceOf(&_TNT.CallOpts, _owner)
 }
 
 // Decimals is a free data retrieval call binding the contract method 0x313ce567.
 //
 // Solidity: function decimals() constant returns(uint8)
-func (_Ethcontracts *EthcontractsCaller) Decimals(opts *bind.CallOpts) (uint8, error) {
+func (_TNT *TNTCaller) Decimals(opts *bind.CallOpts) (uint8, error) {
 	var (
 		ret0 = new(uint8)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "decimals")
+	err := _TNT.contract.Call(opts, out, "decimals")
 	return *ret0, err
 }
 
 // Decimals is a free data retrieval call binding the contract method 0x313ce567.
 //
 // Solidity: function decimals() constant returns(uint8)
-func (_Ethcontracts *EthcontractsSession) Decimals() (uint8, error) {
-	return _Ethcontracts.Contract.Decimals(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) Decimals() (uint8, error) {
+	return _TNT.Contract.Decimals(&_TNT.CallOpts)
 }
 
 // Decimals is a free data retrieval call binding the contract method 0x313ce567.
 //
 // Solidity: function decimals() constant returns(uint8)
-func (_Ethcontracts *EthcontractsCallerSession) Decimals() (uint8, error) {
-	return _Ethcontracts.Contract.Decimals(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) Decimals() (uint8, error) {
+	return _TNT.Contract.Decimals(&_TNT.CallOpts)
 }
 
 // IsOwner is a free data retrieval call binding the contract method 0x8f32d59b.
 //
 // Solidity: function isOwner() constant returns(bool)
-func (_Ethcontracts *EthcontractsCaller) IsOwner(opts *bind.CallOpts) (bool, error) {
+func (_TNT *TNTCaller) IsOwner(opts *bind.CallOpts) (bool, error) {
 	var (
 		ret0 = new(bool)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "isOwner")
+	err := _TNT.contract.Call(opts, out, "isOwner")
 	return *ret0, err
 }
 
 // IsOwner is a free data retrieval call binding the contract method 0x8f32d59b.
 //
 // Solidity: function isOwner() constant returns(bool)
-func (_Ethcontracts *EthcontractsSession) IsOwner() (bool, error) {
-	return _Ethcontracts.Contract.IsOwner(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) IsOwner() (bool, error) {
+	return _TNT.Contract.IsOwner(&_TNT.CallOpts)
 }
 
 // IsOwner is a free data retrieval call binding the contract method 0x8f32d59b.
 //
 // Solidity: function isOwner() constant returns(bool)
-func (_Ethcontracts *EthcontractsCallerSession) IsOwner() (bool, error) {
-	return _Ethcontracts.Contract.IsOwner(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) IsOwner() (bool, error) {
+	return _TNT.Contract.IsOwner(&_TNT.CallOpts)
 }
 
 // IsPauser is a free data retrieval call binding the contract method 0x46fbf68e.
 //
 // Solidity: function isPauser(address account) constant returns(bool)
-func (_Ethcontracts *EthcontractsCaller) IsPauser(opts *bind.CallOpts, account common.Address) (bool, error) {
+func (_TNT *TNTCaller) IsPauser(opts *bind.CallOpts, account common.Address) (bool, error) {
 	var (
 		ret0 = new(bool)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "isPauser", account)
+	err := _TNT.contract.Call(opts, out, "isPauser", account)
 	return *ret0, err
 }
 
 // IsPauser is a free data retrieval call binding the contract method 0x46fbf68e.
 //
 // Solidity: function isPauser(address account) constant returns(bool)
-func (_Ethcontracts *EthcontractsSession) IsPauser(account common.Address) (bool, error) {
-	return _Ethcontracts.Contract.IsPauser(&_Ethcontracts.CallOpts, account)
+func (_TNT *TNTSession) IsPauser(account common.Address) (bool, error) {
+	return _TNT.Contract.IsPauser(&_TNT.CallOpts, account)
 }
 
 // IsPauser is a free data retrieval call binding the contract method 0x46fbf68e.
 //
 // Solidity: function isPauser(address account) constant returns(bool)
-func (_Ethcontracts *EthcontractsCallerSession) IsPauser(account common.Address) (bool, error) {
-	return _Ethcontracts.Contract.IsPauser(&_Ethcontracts.CallOpts, account)
+func (_TNT *TNTCallerSession) IsPauser(account common.Address) (bool, error) {
+	return _TNT.Contract.IsPauser(&_TNT.CallOpts, account)
 }
 
 // LastMintedAtBlock is a free data retrieval call binding the contract method 0x91bfa2bc.
 //
 // Solidity: function lastMintedAtBlock() constant returns(uint256)
-func (_Ethcontracts *EthcontractsCaller) LastMintedAtBlock(opts *bind.CallOpts) (*big.Int, error) {
+func (_TNT *TNTCaller) LastMintedAtBlock(opts *bind.CallOpts) (*big.Int, error) {
 	var (
 		ret0 = new(*big.Int)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "lastMintedAtBlock")
+	err := _TNT.contract.Call(opts, out, "lastMintedAtBlock")
 	return *ret0, err
 }
 
 // LastMintedAtBlock is a free data retrieval call binding the contract method 0x91bfa2bc.
 //
 // Solidity: function lastMintedAtBlock() constant returns(uint256)
-func (_Ethcontracts *EthcontractsSession) LastMintedAtBlock() (*big.Int, error) {
-	return _Ethcontracts.Contract.LastMintedAtBlock(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) LastMintedAtBlock() (*big.Int, error) {
+	return _TNT.Contract.LastMintedAtBlock(&_TNT.CallOpts)
 }
 
 // LastMintedAtBlock is a free data retrieval call binding the contract method 0x91bfa2bc.
 //
 // Solidity: function lastMintedAtBlock() constant returns(uint256)
-func (_Ethcontracts *EthcontractsCallerSession) LastMintedAtBlock() (*big.Int, error) {
-	return _Ethcontracts.Contract.LastMintedAtBlock(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) LastMintedAtBlock() (*big.Int, error) {
+	return _TNT.Contract.LastMintedAtBlock(&_TNT.CallOpts)
 }
 
 // MintAmount is a free data retrieval call binding the contract method 0x5a2bcc18.
 //
 // Solidity: function mintAmount() constant returns(uint256)
-func (_Ethcontracts *EthcontractsCaller) MintAmount(opts *bind.CallOpts) (*big.Int, error) {
+func (_TNT *TNTCaller) MintAmount(opts *bind.CallOpts) (*big.Int, error) {
 	var (
 		ret0 = new(*big.Int)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "mintAmount")
+	err := _TNT.contract.Call(opts, out, "mintAmount")
 	return *ret0, err
 }
 
 // MintAmount is a free data retrieval call binding the contract method 0x5a2bcc18.
 //
 // Solidity: function mintAmount() constant returns(uint256)
-func (_Ethcontracts *EthcontractsSession) MintAmount() (*big.Int, error) {
-	return _Ethcontracts.Contract.MintAmount(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) MintAmount() (*big.Int, error) {
+	return _TNT.Contract.MintAmount(&_TNT.CallOpts)
 }
 
 // MintAmount is a free data retrieval call binding the contract method 0x5a2bcc18.
 //
 // Solidity: function mintAmount() constant returns(uint256)
-func (_Ethcontracts *EthcontractsCallerSession) MintAmount() (*big.Int, error) {
-	return _Ethcontracts.Contract.MintAmount(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) MintAmount() (*big.Int, error) {
+	return _TNT.Contract.MintAmount(&_TNT.CallOpts)
 }
 
 // MintingInterval is a free data retrieval call binding the contract method 0xa3059ef0.
 //
 // Solidity: function mintingInterval() constant returns(uint256)
-func (_Ethcontracts *EthcontractsCaller) MintingInterval(opts *bind.CallOpts) (*big.Int, error) {
+func (_TNT *TNTCaller) MintingInterval(opts *bind.CallOpts) (*big.Int, error) {
 	var (
 		ret0 = new(*big.Int)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "mintingInterval")
+	err := _TNT.contract.Call(opts, out, "mintingInterval")
 	return *ret0, err
 }
 
 // MintingInterval is a free data retrieval call binding the contract method 0xa3059ef0.
 //
 // Solidity: function mintingInterval() constant returns(uint256)
-func (_Ethcontracts *EthcontractsSession) MintingInterval() (*big.Int, error) {
-	return _Ethcontracts.Contract.MintingInterval(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) MintingInterval() (*big.Int, error) {
+	return _TNT.Contract.MintingInterval(&_TNT.CallOpts)
 }
 
 // MintingInterval is a free data retrieval call binding the contract method 0xa3059ef0.
 //
 // Solidity: function mintingInterval() constant returns(uint256)
-func (_Ethcontracts *EthcontractsCallerSession) MintingInterval() (*big.Int, error) {
-	return _Ethcontracts.Contract.MintingInterval(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) MintingInterval() (*big.Int, error) {
+	return _TNT.Contract.MintingInterval(&_TNT.CallOpts)
 }
 
 // Name is a free data retrieval call binding the contract method 0x06fdde03.
 //
 // Solidity: function name() constant returns(string)
-func (_Ethcontracts *EthcontractsCaller) Name(opts *bind.CallOpts) (string, error) {
+func (_TNT *TNTCaller) Name(opts *bind.CallOpts) (string, error) {
 	var (
 		ret0 = new(string)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "name")
+	err := _TNT.contract.Call(opts, out, "name")
 	return *ret0, err
 }
 
 // Name is a free data retrieval call binding the contract method 0x06fdde03.
 //
 // Solidity: function name() constant returns(string)
-func (_Ethcontracts *EthcontractsSession) Name() (string, error) {
-	return _Ethcontracts.Contract.Name(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) Name() (string, error) {
+	return _TNT.Contract.Name(&_TNT.CallOpts)
 }
 
 // Name is a free data retrieval call binding the contract method 0x06fdde03.
 //
 // Solidity: function name() constant returns(string)
-func (_Ethcontracts *EthcontractsCallerSession) Name() (string, error) {
-	return _Ethcontracts.Contract.Name(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) Name() (string, error) {
+	return _TNT.Contract.Name(&_TNT.CallOpts)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() constant returns(address)
-func (_Ethcontracts *EthcontractsCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
+func (_TNT *TNTCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
 	var (
 		ret0 = new(common.Address)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "owner")
+	err := _TNT.contract.Call(opts, out, "owner")
 	return *ret0, err
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() constant returns(address)
-func (_Ethcontracts *EthcontractsSession) Owner() (common.Address, error) {
-	return _Ethcontracts.Contract.Owner(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) Owner() (common.Address, error) {
+	return _TNT.Contract.Owner(&_TNT.CallOpts)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() constant returns(address)
-func (_Ethcontracts *EthcontractsCallerSession) Owner() (common.Address, error) {
-	return _Ethcontracts.Contract.Owner(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) Owner() (common.Address, error) {
+	return _TNT.Contract.Owner(&_TNT.CallOpts)
 }
 
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() constant returns(bool)
-func (_Ethcontracts *EthcontractsCaller) Paused(opts *bind.CallOpts) (bool, error) {
+func (_TNT *TNTCaller) Paused(opts *bind.CallOpts) (bool, error) {
 	var (
 		ret0 = new(bool)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "paused")
+	err := _TNT.contract.Call(opts, out, "paused")
 	return *ret0, err
 }
 
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() constant returns(bool)
-func (_Ethcontracts *EthcontractsSession) Paused() (bool, error) {
-	return _Ethcontracts.Contract.Paused(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) Paused() (bool, error) {
+	return _TNT.Contract.Paused(&_TNT.CallOpts)
 }
 
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() constant returns(bool)
-func (_Ethcontracts *EthcontractsCallerSession) Paused() (bool, error) {
-	return _Ethcontracts.Contract.Paused(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) Paused() (bool, error) {
+	return _TNT.Contract.Paused(&_TNT.CallOpts)
 }
 
 // QuorumRegisteredBallots is a free data retrieval call binding the contract method 0xdff11d11.
 //
 // Solidity: function quorumRegisteredBallots(uint256 ) constant returns(bytes32)
-func (_Ethcontracts *EthcontractsCaller) QuorumRegisteredBallots(opts *bind.CallOpts, arg0 *big.Int) ([32]byte, error) {
+func (_TNT *TNTCaller) QuorumRegisteredBallots(opts *bind.CallOpts, arg0 *big.Int) ([32]byte, error) {
 	var (
 		ret0 = new([32]byte)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "quorumRegisteredBallots", arg0)
+	err := _TNT.contract.Call(opts, out, "quorumRegisteredBallots", arg0)
 	return *ret0, err
 }
 
 // QuorumRegisteredBallots is a free data retrieval call binding the contract method 0xdff11d11.
 //
 // Solidity: function quorumRegisteredBallots(uint256 ) constant returns(bytes32)
-func (_Ethcontracts *EthcontractsSession) QuorumRegisteredBallots(arg0 *big.Int) ([32]byte, error) {
-	return _Ethcontracts.Contract.QuorumRegisteredBallots(&_Ethcontracts.CallOpts, arg0)
+func (_TNT *TNTSession) QuorumRegisteredBallots(arg0 *big.Int) ([32]byte, error) {
+	return _TNT.Contract.QuorumRegisteredBallots(&_TNT.CallOpts, arg0)
 }
 
 // QuorumRegisteredBallots is a free data retrieval call binding the contract method 0xdff11d11.
 //
 // Solidity: function quorumRegisteredBallots(uint256 ) constant returns(bytes32)
-func (_Ethcontracts *EthcontractsCallerSession) QuorumRegisteredBallots(arg0 *big.Int) ([32]byte, error) {
-	return _Ethcontracts.Contract.QuorumRegisteredBallots(&_Ethcontracts.CallOpts, arg0)
+func (_TNT *TNTCallerSession) QuorumRegisteredBallots(arg0 *big.Int) ([32]byte, error) {
+	return _TNT.Contract.QuorumRegisteredBallots(&_TNT.CallOpts, arg0)
 }
 
 // Recover is a free data retrieval call binding the contract method 0x19045a25.
 //
 // Solidity: function recover(bytes32 hash, bytes signature) constant returns(address)
-func (_Ethcontracts *EthcontractsCaller) Recover(opts *bind.CallOpts, hash [32]byte, signature []byte) (common.Address, error) {
+func (_TNT *TNTCaller) Recover(opts *bind.CallOpts, hash [32]byte, signature []byte) (common.Address, error) {
 	var (
 		ret0 = new(common.Address)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "recover", hash, signature)
+	err := _TNT.contract.Call(opts, out, "recover", hash, signature)
 	return *ret0, err
 }
 
 // Recover is a free data retrieval call binding the contract method 0x19045a25.
 //
 // Solidity: function recover(bytes32 hash, bytes signature) constant returns(address)
-func (_Ethcontracts *EthcontractsSession) Recover(hash [32]byte, signature []byte) (common.Address, error) {
-	return _Ethcontracts.Contract.Recover(&_Ethcontracts.CallOpts, hash, signature)
+func (_TNT *TNTSession) Recover(hash [32]byte, signature []byte) (common.Address, error) {
+	return _TNT.Contract.Recover(&_TNT.CallOpts, hash, signature)
 }
 
 // Recover is a free data retrieval call binding the contract method 0x19045a25.
 //
 // Solidity: function recover(bytes32 hash, bytes signature) constant returns(address)
-func (_Ethcontracts *EthcontractsCallerSession) Recover(hash [32]byte, signature []byte) (common.Address, error) {
-	return _Ethcontracts.Contract.Recover(&_Ethcontracts.CallOpts, hash, signature)
+func (_TNT *TNTCallerSession) Recover(hash [32]byte, signature []byte) (common.Address, error) {
+	return _TNT.Contract.Recover(&_TNT.CallOpts, hash, signature)
 }
 
 // Symbol is a free data retrieval call binding the contract method 0x95d89b41.
 //
 // Solidity: function symbol() constant returns(string)
-func (_Ethcontracts *EthcontractsCaller) Symbol(opts *bind.CallOpts) (string, error) {
+func (_TNT *TNTCaller) Symbol(opts *bind.CallOpts) (string, error) {
 	var (
 		ret0 = new(string)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "symbol")
+	err := _TNT.contract.Call(opts, out, "symbol")
 	return *ret0, err
 }
 
 // Symbol is a free data retrieval call binding the contract method 0x95d89b41.
 //
 // Solidity: function symbol() constant returns(string)
-func (_Ethcontracts *EthcontractsSession) Symbol() (string, error) {
-	return _Ethcontracts.Contract.Symbol(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) Symbol() (string, error) {
+	return _TNT.Contract.Symbol(&_TNT.CallOpts)
 }
 
 // Symbol is a free data retrieval call binding the contract method 0x95d89b41.
 //
 // Solidity: function symbol() constant returns(string)
-func (_Ethcontracts *EthcontractsCallerSession) Symbol() (string, error) {
-	return _Ethcontracts.Contract.Symbol(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) Symbol() (string, error) {
+	return _TNT.Contract.Symbol(&_TNT.CallOpts)
 }
 
 // ToEthSignedMessageHash is a free data retrieval call binding the contract method 0x918a15cf.
 //
 // Solidity: function toEthSignedMessageHash(bytes32 hash) constant returns(bytes32)
-func (_Ethcontracts *EthcontractsCaller) ToEthSignedMessageHash(opts *bind.CallOpts, hash [32]byte) ([32]byte, error) {
+func (_TNT *TNTCaller) ToEthSignedMessageHash(opts *bind.CallOpts, hash [32]byte) ([32]byte, error) {
 	var (
 		ret0 = new([32]byte)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "toEthSignedMessageHash", hash)
+	err := _TNT.contract.Call(opts, out, "toEthSignedMessageHash", hash)
 	return *ret0, err
 }
 
 // ToEthSignedMessageHash is a free data retrieval call binding the contract method 0x918a15cf.
 //
 // Solidity: function toEthSignedMessageHash(bytes32 hash) constant returns(bytes32)
-func (_Ethcontracts *EthcontractsSession) ToEthSignedMessageHash(hash [32]byte) ([32]byte, error) {
-	return _Ethcontracts.Contract.ToEthSignedMessageHash(&_Ethcontracts.CallOpts, hash)
+func (_TNT *TNTSession) ToEthSignedMessageHash(hash [32]byte) ([32]byte, error) {
+	return _TNT.Contract.ToEthSignedMessageHash(&_TNT.CallOpts, hash)
 }
 
 // ToEthSignedMessageHash is a free data retrieval call binding the contract method 0x918a15cf.
 //
 // Solidity: function toEthSignedMessageHash(bytes32 hash) constant returns(bytes32)
-func (_Ethcontracts *EthcontractsCallerSession) ToEthSignedMessageHash(hash [32]byte) ([32]byte, error) {
-	return _Ethcontracts.Contract.ToEthSignedMessageHash(&_Ethcontracts.CallOpts, hash)
+func (_TNT *TNTCallerSession) ToEthSignedMessageHash(hash [32]byte) ([32]byte, error) {
+	return _TNT.Contract.ToEthSignedMessageHash(&_TNT.CallOpts, hash)
 }
 
 // TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
 //
 // Solidity: function totalSupply() constant returns(uint256)
-func (_Ethcontracts *EthcontractsCaller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
+func (_TNT *TNTCaller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
 	var (
 		ret0 = new(*big.Int)
 	)
 	out := ret0
-	err := _Ethcontracts.contract.Call(opts, out, "totalSupply")
+	err := _TNT.contract.Call(opts, out, "totalSupply")
 	return *ret0, err
 }
 
 // TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
 //
 // Solidity: function totalSupply() constant returns(uint256)
-func (_Ethcontracts *EthcontractsSession) TotalSupply() (*big.Int, error) {
-	return _Ethcontracts.Contract.TotalSupply(&_Ethcontracts.CallOpts)
+func (_TNT *TNTSession) TotalSupply() (*big.Int, error) {
+	return _TNT.Contract.TotalSupply(&_TNT.CallOpts)
 }
 
 // TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
 //
 // Solidity: function totalSupply() constant returns(uint256)
-func (_Ethcontracts *EthcontractsCallerSession) TotalSupply() (*big.Int, error) {
-	return _Ethcontracts.Contract.TotalSupply(&_Ethcontracts.CallOpts)
+func (_TNT *TNTCallerSession) TotalSupply() (*big.Int, error) {
+	return _TNT.Contract.TotalSupply(&_TNT.CallOpts)
 }
 
 // AddPauser is a paid mutator transaction binding the contract method 0x82dc1ec4.
 //
 // Solidity: function addPauser(address account) returns()
-func (_Ethcontracts *EthcontractsTransactor) AddPauser(opts *bind.TransactOpts, account common.Address) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "addPauser", account)
+func (_TNT *TNTTransactor) AddPauser(opts *bind.TransactOpts, account common.Address) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "addPauser", account)
 }
 
 // AddPauser is a paid mutator transaction binding the contract method 0x82dc1ec4.
 //
 // Solidity: function addPauser(address account) returns()
-func (_Ethcontracts *EthcontractsSession) AddPauser(account common.Address) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.AddPauser(&_Ethcontracts.TransactOpts, account)
+func (_TNT *TNTSession) AddPauser(account common.Address) (*types.Transaction, error) {
+	return _TNT.Contract.AddPauser(&_TNT.TransactOpts, account)
 }
 
 // AddPauser is a paid mutator transaction binding the contract method 0x82dc1ec4.
 //
 // Solidity: function addPauser(address account) returns()
-func (_Ethcontracts *EthcontractsTransactorSession) AddPauser(account common.Address) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.AddPauser(&_Ethcontracts.TransactOpts, account)
+func (_TNT *TNTTransactorSession) AddPauser(account common.Address) (*types.Transaction, error) {
+	return _TNT.Contract.AddPauser(&_TNT.TransactOpts, account)
 }
 
 // Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
 //
 // Solidity: function approve(address _spender, uint256 _value) returns(bool)
-func (_Ethcontracts *EthcontractsTransactor) Approve(opts *bind.TransactOpts, _spender common.Address, _value *big.Int) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "approve", _spender, _value)
+func (_TNT *TNTTransactor) Approve(opts *bind.TransactOpts, _spender common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "approve", _spender, _value)
 }
 
 // Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
 //
 // Solidity: function approve(address _spender, uint256 _value) returns(bool)
-func (_Ethcontracts *EthcontractsSession) Approve(_spender common.Address, _value *big.Int) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.Approve(&_Ethcontracts.TransactOpts, _spender, _value)
+func (_TNT *TNTSession) Approve(_spender common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _TNT.Contract.Approve(&_TNT.TransactOpts, _spender, _value)
 }
 
 // Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
 //
 // Solidity: function approve(address _spender, uint256 _value) returns(bool)
-func (_Ethcontracts *EthcontractsTransactorSession) Approve(_spender common.Address, _value *big.Int) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.Approve(&_Ethcontracts.TransactOpts, _spender, _value)
+func (_TNT *TNTTransactorSession) Approve(_spender common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _TNT.Contract.Approve(&_TNT.TransactOpts, _spender, _value)
 }
 
 // Mint is a paid mutator transaction binding the contract method 0x5279f455.
 //
 // Solidity: function mint(address[72] _nodes, bytes32 _hash, bytes signature1, bytes signature2, bytes signature3, bytes signature4, bytes signature5, bytes signature6) returns(bool)
-func (_Ethcontracts *EthcontractsTransactor) Mint(opts *bind.TransactOpts, _nodes [72]common.Address, _hash [32]byte, signature1 []byte, signature2 []byte, signature3 []byte, signature4 []byte, signature5 []byte, signature6 []byte) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "mint", _nodes, _hash, signature1, signature2, signature3, signature4, signature5, signature6)
+func (_TNT *TNTTransactor) Mint(opts *bind.TransactOpts, _nodes [72]common.Address, _hash [32]byte, signature1 []byte, signature2 []byte, signature3 []byte, signature4 []byte, signature5 []byte, signature6 []byte) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "mint", _nodes, _hash, signature1, signature2, signature3, signature4, signature5, signature6)
 }
 
 // Mint is a paid mutator transaction binding the contract method 0x5279f455.
 //
 // Solidity: function mint(address[72] _nodes, bytes32 _hash, bytes signature1, bytes signature2, bytes signature3, bytes signature4, bytes signature5, bytes signature6) returns(bool)
-func (_Ethcontracts *EthcontractsSession) Mint(_nodes [72]common.Address, _hash [32]byte, signature1 []byte, signature2 []byte, signature3 []byte, signature4 []byte, signature5 []byte, signature6 []byte) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.Mint(&_Ethcontracts.TransactOpts, _nodes, _hash, signature1, signature2, signature3, signature4, signature5, signature6)
+func (_TNT *TNTSession) Mint(_nodes [72]common.Address, _hash [32]byte, signature1 []byte, signature2 []byte, signature3 []byte, signature4 []byte, signature5 []byte, signature6 []byte) (*types.Transaction, error) {
+	return _TNT.Contract.Mint(&_TNT.TransactOpts, _nodes, _hash, signature1, signature2, signature3, signature4, signature5, signature6)
 }
 
 // Mint is a paid mutator transaction binding the contract method 0x5279f455.
 //
 // Solidity: function mint(address[72] _nodes, bytes32 _hash, bytes signature1, bytes signature2, bytes signature3, bytes signature4, bytes signature5, bytes signature6) returns(bool)
-func (_Ethcontracts *EthcontractsTransactorSession) Mint(_nodes [72]common.Address, _hash [32]byte, signature1 []byte, signature2 []byte, signature3 []byte, signature4 []byte, signature5 []byte, signature6 []byte) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.Mint(&_Ethcontracts.TransactOpts, _nodes, _hash, signature1, signature2, signature3, signature4, signature5, signature6)
+func (_TNT *TNTTransactorSession) Mint(_nodes [72]common.Address, _hash [32]byte, signature1 []byte, signature2 []byte, signature3 []byte, signature4 []byte, signature5 []byte, signature6 []byte) (*types.Transaction, error) {
+	return _TNT.Contract.Mint(&_TNT.TransactOpts, _nodes, _hash, signature1, signature2, signature3, signature4, signature5, signature6)
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Ethcontracts *EthcontractsTransactor) Pause(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "pause")
+func (_TNT *TNTTransactor) Pause(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "pause")
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Ethcontracts *EthcontractsSession) Pause() (*types.Transaction, error) {
-	return _Ethcontracts.Contract.Pause(&_Ethcontracts.TransactOpts)
+func (_TNT *TNTSession) Pause() (*types.Transaction, error) {
+	return _TNT.Contract.Pause(&_TNT.TransactOpts)
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Ethcontracts *EthcontractsTransactorSession) Pause() (*types.Transaction, error) {
-	return _Ethcontracts.Contract.Pause(&_Ethcontracts.TransactOpts)
+func (_TNT *TNTTransactorSession) Pause() (*types.Transaction, error) {
+	return _TNT.Contract.Pause(&_TNT.TransactOpts)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_Ethcontracts *EthcontractsTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "renounceOwnership")
+func (_TNT *TNTTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "renounceOwnership")
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_Ethcontracts *EthcontractsSession) RenounceOwnership() (*types.Transaction, error) {
-	return _Ethcontracts.Contract.RenounceOwnership(&_Ethcontracts.TransactOpts)
+func (_TNT *TNTSession) RenounceOwnership() (*types.Transaction, error) {
+	return _TNT.Contract.RenounceOwnership(&_TNT.TransactOpts)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_Ethcontracts *EthcontractsTransactorSession) RenounceOwnership() (*types.Transaction, error) {
-	return _Ethcontracts.Contract.RenounceOwnership(&_Ethcontracts.TransactOpts)
+func (_TNT *TNTTransactorSession) RenounceOwnership() (*types.Transaction, error) {
+	return _TNT.Contract.RenounceOwnership(&_TNT.TransactOpts)
 }
 
 // RenouncePauser is a paid mutator transaction binding the contract method 0x6ef8d66d.
 //
 // Solidity: function renouncePauser() returns()
-func (_Ethcontracts *EthcontractsTransactor) RenouncePauser(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "renouncePauser")
+func (_TNT *TNTTransactor) RenouncePauser(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "renouncePauser")
 }
 
 // RenouncePauser is a paid mutator transaction binding the contract method 0x6ef8d66d.
 //
 // Solidity: function renouncePauser() returns()
-func (_Ethcontracts *EthcontractsSession) RenouncePauser() (*types.Transaction, error) {
-	return _Ethcontracts.Contract.RenouncePauser(&_Ethcontracts.TransactOpts)
+func (_TNT *TNTSession) RenouncePauser() (*types.Transaction, error) {
+	return _TNT.Contract.RenouncePauser(&_TNT.TransactOpts)
 }
 
 // RenouncePauser is a paid mutator transaction binding the contract method 0x6ef8d66d.
 //
 // Solidity: function renouncePauser() returns()
-func (_Ethcontracts *EthcontractsTransactorSession) RenouncePauser() (*types.Transaction, error) {
-	return _Ethcontracts.Contract.RenouncePauser(&_Ethcontracts.TransactOpts)
+func (_TNT *TNTTransactorSession) RenouncePauser() (*types.Transaction, error) {
+	return _TNT.Contract.RenouncePauser(&_TNT.TransactOpts)
 }
 
 // SetChainpointRegistry is a paid mutator transaction binding the contract method 0x44ea8d44.
 //
 // Solidity: function setChainpointRegistry(address _addr) returns(bool)
-func (_Ethcontracts *EthcontractsTransactor) SetChainpointRegistry(opts *bind.TransactOpts, _addr common.Address) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "setChainpointRegistry", _addr)
+func (_TNT *TNTTransactor) SetChainpointRegistry(opts *bind.TransactOpts, _addr common.Address) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "setChainpointRegistry", _addr)
 }
 
 // SetChainpointRegistry is a paid mutator transaction binding the contract method 0x44ea8d44.
 //
 // Solidity: function setChainpointRegistry(address _addr) returns(bool)
-func (_Ethcontracts *EthcontractsSession) SetChainpointRegistry(_addr common.Address) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.SetChainpointRegistry(&_Ethcontracts.TransactOpts, _addr)
+func (_TNT *TNTSession) SetChainpointRegistry(_addr common.Address) (*types.Transaction, error) {
+	return _TNT.Contract.SetChainpointRegistry(&_TNT.TransactOpts, _addr)
 }
 
 // SetChainpointRegistry is a paid mutator transaction binding the contract method 0x44ea8d44.
 //
 // Solidity: function setChainpointRegistry(address _addr) returns(bool)
-func (_Ethcontracts *EthcontractsTransactorSession) SetChainpointRegistry(_addr common.Address) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.SetChainpointRegistry(&_Ethcontracts.TransactOpts, _addr)
+func (_TNT *TNTTransactorSession) SetChainpointRegistry(_addr common.Address) (*types.Transaction, error) {
+	return _TNT.Contract.SetChainpointRegistry(&_TNT.TransactOpts, _addr)
 }
 
 // Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
 //
 // Solidity: function transfer(address _to, uint256 _value) returns(bool)
-func (_Ethcontracts *EthcontractsTransactor) Transfer(opts *bind.TransactOpts, _to common.Address, _value *big.Int) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "transfer", _to, _value)
+func (_TNT *TNTTransactor) Transfer(opts *bind.TransactOpts, _to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "transfer", _to, _value)
 }
 
 // Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
 //
 // Solidity: function transfer(address _to, uint256 _value) returns(bool)
-func (_Ethcontracts *EthcontractsSession) Transfer(_to common.Address, _value *big.Int) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.Transfer(&_Ethcontracts.TransactOpts, _to, _value)
+func (_TNT *TNTSession) Transfer(_to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _TNT.Contract.Transfer(&_TNT.TransactOpts, _to, _value)
 }
 
 // Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
 //
 // Solidity: function transfer(address _to, uint256 _value) returns(bool)
-func (_Ethcontracts *EthcontractsTransactorSession) Transfer(_to common.Address, _value *big.Int) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.Transfer(&_Ethcontracts.TransactOpts, _to, _value)
+func (_TNT *TNTTransactorSession) Transfer(_to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _TNT.Contract.Transfer(&_TNT.TransactOpts, _to, _value)
 }
 
 // TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
 //
 // Solidity: function transferFrom(address _from, address _to, uint256 _value) returns(bool)
-func (_Ethcontracts *EthcontractsTransactor) TransferFrom(opts *bind.TransactOpts, _from common.Address, _to common.Address, _value *big.Int) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "transferFrom", _from, _to, _value)
+func (_TNT *TNTTransactor) TransferFrom(opts *bind.TransactOpts, _from common.Address, _to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "transferFrom", _from, _to, _value)
 }
 
 // TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
 //
 // Solidity: function transferFrom(address _from, address _to, uint256 _value) returns(bool)
-func (_Ethcontracts *EthcontractsSession) TransferFrom(_from common.Address, _to common.Address, _value *big.Int) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.TransferFrom(&_Ethcontracts.TransactOpts, _from, _to, _value)
+func (_TNT *TNTSession) TransferFrom(_from common.Address, _to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _TNT.Contract.TransferFrom(&_TNT.TransactOpts, _from, _to, _value)
 }
 
 // TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
 //
 // Solidity: function transferFrom(address _from, address _to, uint256 _value) returns(bool)
-func (_Ethcontracts *EthcontractsTransactorSession) TransferFrom(_from common.Address, _to common.Address, _value *big.Int) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.TransferFrom(&_Ethcontracts.TransactOpts, _from, _to, _value)
+func (_TNT *TNTTransactorSession) TransferFrom(_from common.Address, _to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _TNT.Contract.TransferFrom(&_TNT.TransactOpts, _from, _to, _value)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
-func (_Ethcontracts *EthcontractsTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "transferOwnership", newOwner)
+func (_TNT *TNTTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "transferOwnership", newOwner)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
-func (_Ethcontracts *EthcontractsSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.TransferOwnership(&_Ethcontracts.TransactOpts, newOwner)
+func (_TNT *TNTSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _TNT.Contract.TransferOwnership(&_TNT.TransactOpts, newOwner)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
-func (_Ethcontracts *EthcontractsTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
-	return _Ethcontracts.Contract.TransferOwnership(&_Ethcontracts.TransactOpts, newOwner)
+func (_TNT *TNTTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _TNT.Contract.TransferOwnership(&_TNT.TransactOpts, newOwner)
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Ethcontracts *EthcontractsTransactor) Unpause(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Ethcontracts.contract.Transact(opts, "unpause")
+func (_TNT *TNTTransactor) Unpause(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TNT.contract.Transact(opts, "unpause")
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Ethcontracts *EthcontractsSession) Unpause() (*types.Transaction, error) {
-	return _Ethcontracts.Contract.Unpause(&_Ethcontracts.TransactOpts)
+func (_TNT *TNTSession) Unpause() (*types.Transaction, error) {
+	return _TNT.Contract.Unpause(&_TNT.TransactOpts)
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Ethcontracts *EthcontractsTransactorSession) Unpause() (*types.Transaction, error) {
-	return _Ethcontracts.Contract.Unpause(&_Ethcontracts.TransactOpts)
+func (_TNT *TNTTransactorSession) Unpause() (*types.Transaction, error) {
+	return _TNT.Contract.Unpause(&_TNT.TransactOpts)
 }
 
-// EthcontractsApprovalIterator is returned from FilterApproval and is used to iterate over the raw logs and unpacked data for Approval events raised by the Ethcontracts contract.
-type EthcontractsApprovalIterator struct {
-	Event *EthcontractsApproval // Event containing the contract specifics and raw log
+// TNTApprovalIterator is returned from FilterApproval and is used to iterate over the raw logs and unpacked data for Approval events raised by the TNT contract.
+type TNTApprovalIterator struct {
+	Event *TNTApproval // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -887,7 +887,7 @@ type EthcontractsApprovalIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EthcontractsApprovalIterator) Next() bool {
+func (it *TNTApprovalIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -896,7 +896,7 @@ func (it *EthcontractsApprovalIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EthcontractsApproval)
+			it.Event = new(TNTApproval)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -911,7 +911,7 @@ func (it *EthcontractsApprovalIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EthcontractsApproval)
+		it.Event = new(TNTApproval)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -927,19 +927,19 @@ func (it *EthcontractsApprovalIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EthcontractsApprovalIterator) Error() error {
+func (it *TNTApprovalIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EthcontractsApprovalIterator) Close() error {
+func (it *TNTApprovalIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EthcontractsApproval represents a Approval event raised by the Ethcontracts contract.
-type EthcontractsApproval struct {
+// TNTApproval represents a Approval event raised by the TNT contract.
+type TNTApproval struct {
 	Owner   common.Address
 	Spender common.Address
 	Value   *big.Int
@@ -949,7 +949,7 @@ type EthcontractsApproval struct {
 // FilterApproval is a free log retrieval operation binding the contract event 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925.
 //
 // Solidity: event Approval(address indexed owner, address indexed spender, uint256 value)
-func (_Ethcontracts *EthcontractsFilterer) FilterApproval(opts *bind.FilterOpts, owner []common.Address, spender []common.Address) (*EthcontractsApprovalIterator, error) {
+func (_TNT *TNTFilterer) FilterApproval(opts *bind.FilterOpts, owner []common.Address, spender []common.Address) (*TNTApprovalIterator, error) {
 
 	var ownerRule []interface{}
 	for _, ownerItem := range owner {
@@ -960,17 +960,17 @@ func (_Ethcontracts *EthcontractsFilterer) FilterApproval(opts *bind.FilterOpts,
 		spenderRule = append(spenderRule, spenderItem)
 	}
 
-	logs, sub, err := _Ethcontracts.contract.FilterLogs(opts, "Approval", ownerRule, spenderRule)
+	logs, sub, err := _TNT.contract.FilterLogs(opts, "Approval", ownerRule, spenderRule)
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsApprovalIterator{contract: _Ethcontracts.contract, event: "Approval", logs: logs, sub: sub}, nil
+	return &TNTApprovalIterator{contract: _TNT.contract, event: "Approval", logs: logs, sub: sub}, nil
 }
 
 // WatchApproval is a free log subscription operation binding the contract event 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925.
 //
 // Solidity: event Approval(address indexed owner, address indexed spender, uint256 value)
-func (_Ethcontracts *EthcontractsFilterer) WatchApproval(opts *bind.WatchOpts, sink chan<- *EthcontractsApproval, owner []common.Address, spender []common.Address) (event.Subscription, error) {
+func (_TNT *TNTFilterer) WatchApproval(opts *bind.WatchOpts, sink chan<- *TNTApproval, owner []common.Address, spender []common.Address) (event.Subscription, error) {
 
 	var ownerRule []interface{}
 	for _, ownerItem := range owner {
@@ -981,7 +981,7 @@ func (_Ethcontracts *EthcontractsFilterer) WatchApproval(opts *bind.WatchOpts, s
 		spenderRule = append(spenderRule, spenderItem)
 	}
 
-	logs, sub, err := _Ethcontracts.contract.WatchLogs(opts, "Approval", ownerRule, spenderRule)
+	logs, sub, err := _TNT.contract.WatchLogs(opts, "Approval", ownerRule, spenderRule)
 	if err != nil {
 		return nil, err
 	}
@@ -991,8 +991,8 @@ func (_Ethcontracts *EthcontractsFilterer) WatchApproval(opts *bind.WatchOpts, s
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EthcontractsApproval)
-				if err := _Ethcontracts.contract.UnpackLog(event, "Approval", log); err != nil {
+				event := new(TNTApproval)
+				if err := _TNT.contract.UnpackLog(event, "Approval", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1013,9 +1013,9 @@ func (_Ethcontracts *EthcontractsFilterer) WatchApproval(opts *bind.WatchOpts, s
 	}), nil
 }
 
-// EthcontractsMintIterator is returned from FilterMint and is used to iterate over the raw logs and unpacked data for Mint events raised by the Ethcontracts contract.
-type EthcontractsMintIterator struct {
-	Event *EthcontractsMint // Event containing the contract specifics and raw log
+// TNTMintIterator is returned from FilterMint and is used to iterate over the raw logs and unpacked data for Mint events raised by the TNT contract.
+type TNTMintIterator struct {
+	Event *TNTMint // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1029,7 +1029,7 @@ type EthcontractsMintIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EthcontractsMintIterator) Next() bool {
+func (it *TNTMintIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1038,7 +1038,7 @@ func (it *EthcontractsMintIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EthcontractsMint)
+			it.Event = new(TNTMint)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1053,7 +1053,7 @@ func (it *EthcontractsMintIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EthcontractsMint)
+		it.Event = new(TNTMint)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1069,19 +1069,19 @@ func (it *EthcontractsMintIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EthcontractsMintIterator) Error() error {
+func (it *TNTMintIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EthcontractsMintIterator) Close() error {
+func (it *TNTMintIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EthcontractsMint represents a Mint event raised by the Ethcontracts contract.
-type EthcontractsMint struct {
+// TNTMint represents a Mint event raised by the TNT contract.
+type TNTMint struct {
 	Nodes       [72]common.Address
 	MintAmount  *big.Int
 	BlockHeight *big.Int
@@ -1091,21 +1091,21 @@ type EthcontractsMint struct {
 // FilterMint is a free log retrieval operation binding the contract event 0xc03b15d4ff90a71c53eed1e6907bc35129f4e1507337e30a34770ea77963f602.
 //
 // Solidity: event Mint(address[72] _nodes, uint256 _mintAmount, uint256 _blockHeight)
-func (_Ethcontracts *EthcontractsFilterer) FilterMint(opts *bind.FilterOpts) (*EthcontractsMintIterator, error) {
+func (_TNT *TNTFilterer) FilterMint(opts *bind.FilterOpts) (*TNTMintIterator, error) {
 
-	logs, sub, err := _Ethcontracts.contract.FilterLogs(opts, "Mint")
+	logs, sub, err := _TNT.contract.FilterLogs(opts, "Mint")
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsMintIterator{contract: _Ethcontracts.contract, event: "Mint", logs: logs, sub: sub}, nil
+	return &TNTMintIterator{contract: _TNT.contract, event: "Mint", logs: logs, sub: sub}, nil
 }
 
 // WatchMint is a free log subscription operation binding the contract event 0xc03b15d4ff90a71c53eed1e6907bc35129f4e1507337e30a34770ea77963f602.
 //
 // Solidity: event Mint(address[72] _nodes, uint256 _mintAmount, uint256 _blockHeight)
-func (_Ethcontracts *EthcontractsFilterer) WatchMint(opts *bind.WatchOpts, sink chan<- *EthcontractsMint) (event.Subscription, error) {
+func (_TNT *TNTFilterer) WatchMint(opts *bind.WatchOpts, sink chan<- *TNTMint) (event.Subscription, error) {
 
-	logs, sub, err := _Ethcontracts.contract.WatchLogs(opts, "Mint")
+	logs, sub, err := _TNT.contract.WatchLogs(opts, "Mint")
 	if err != nil {
 		return nil, err
 	}
@@ -1115,8 +1115,8 @@ func (_Ethcontracts *EthcontractsFilterer) WatchMint(opts *bind.WatchOpts, sink 
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EthcontractsMint)
-				if err := _Ethcontracts.contract.UnpackLog(event, "Mint", log); err != nil {
+				event := new(TNTMint)
+				if err := _TNT.contract.UnpackLog(event, "Mint", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1137,9 +1137,9 @@ func (_Ethcontracts *EthcontractsFilterer) WatchMint(opts *bind.WatchOpts, sink 
 	}), nil
 }
 
-// EthcontractsOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the Ethcontracts contract.
-type EthcontractsOwnershipTransferredIterator struct {
-	Event *EthcontractsOwnershipTransferred // Event containing the contract specifics and raw log
+// TNTOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the TNT contract.
+type TNTOwnershipTransferredIterator struct {
+	Event *TNTOwnershipTransferred // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1153,7 +1153,7 @@ type EthcontractsOwnershipTransferredIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EthcontractsOwnershipTransferredIterator) Next() bool {
+func (it *TNTOwnershipTransferredIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1162,7 +1162,7 @@ func (it *EthcontractsOwnershipTransferredIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EthcontractsOwnershipTransferred)
+			it.Event = new(TNTOwnershipTransferred)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1177,7 +1177,7 @@ func (it *EthcontractsOwnershipTransferredIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EthcontractsOwnershipTransferred)
+		it.Event = new(TNTOwnershipTransferred)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1193,19 +1193,19 @@ func (it *EthcontractsOwnershipTransferredIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EthcontractsOwnershipTransferredIterator) Error() error {
+func (it *TNTOwnershipTransferredIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EthcontractsOwnershipTransferredIterator) Close() error {
+func (it *TNTOwnershipTransferredIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EthcontractsOwnershipTransferred represents a OwnershipTransferred event raised by the Ethcontracts contract.
-type EthcontractsOwnershipTransferred struct {
+// TNTOwnershipTransferred represents a OwnershipTransferred event raised by the TNT contract.
+type TNTOwnershipTransferred struct {
 	PreviousOwner common.Address
 	NewOwner      common.Address
 	Raw           types.Log // Blockchain specific contextual infos
@@ -1214,7 +1214,7 @@ type EthcontractsOwnershipTransferred struct {
 // FilterOwnershipTransferred is a free log retrieval operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_Ethcontracts *EthcontractsFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*EthcontractsOwnershipTransferredIterator, error) {
+func (_TNT *TNTFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*TNTOwnershipTransferredIterator, error) {
 
 	var previousOwnerRule []interface{}
 	for _, previousOwnerItem := range previousOwner {
@@ -1225,17 +1225,17 @@ func (_Ethcontracts *EthcontractsFilterer) FilterOwnershipTransferred(opts *bind
 		newOwnerRule = append(newOwnerRule, newOwnerItem)
 	}
 
-	logs, sub, err := _Ethcontracts.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	logs, sub, err := _TNT.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsOwnershipTransferredIterator{contract: _Ethcontracts.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+	return &TNTOwnershipTransferredIterator{contract: _TNT.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
 }
 
 // WatchOwnershipTransferred is a free log subscription operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_Ethcontracts *EthcontractsFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *EthcontractsOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
+func (_TNT *TNTFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *TNTOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
 
 	var previousOwnerRule []interface{}
 	for _, previousOwnerItem := range previousOwner {
@@ -1246,7 +1246,7 @@ func (_Ethcontracts *EthcontractsFilterer) WatchOwnershipTransferred(opts *bind.
 		newOwnerRule = append(newOwnerRule, newOwnerItem)
 	}
 
-	logs, sub, err := _Ethcontracts.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	logs, sub, err := _TNT.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1256,8 +1256,8 @@ func (_Ethcontracts *EthcontractsFilterer) WatchOwnershipTransferred(opts *bind.
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EthcontractsOwnershipTransferred)
-				if err := _Ethcontracts.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+				event := new(TNTOwnershipTransferred)
+				if err := _TNT.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1278,9 +1278,9 @@ func (_Ethcontracts *EthcontractsFilterer) WatchOwnershipTransferred(opts *bind.
 	}), nil
 }
 
-// EthcontractsPausedIterator is returned from FilterPaused and is used to iterate over the raw logs and unpacked data for Paused events raised by the Ethcontracts contract.
-type EthcontractsPausedIterator struct {
-	Event *EthcontractsPaused // Event containing the contract specifics and raw log
+// TNTPausedIterator is returned from FilterPaused and is used to iterate over the raw logs and unpacked data for Paused events raised by the TNT contract.
+type TNTPausedIterator struct {
+	Event *TNTPaused // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1294,7 +1294,7 @@ type EthcontractsPausedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EthcontractsPausedIterator) Next() bool {
+func (it *TNTPausedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1303,7 +1303,7 @@ func (it *EthcontractsPausedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EthcontractsPaused)
+			it.Event = new(TNTPaused)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1318,7 +1318,7 @@ func (it *EthcontractsPausedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EthcontractsPaused)
+		it.Event = new(TNTPaused)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1334,19 +1334,19 @@ func (it *EthcontractsPausedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EthcontractsPausedIterator) Error() error {
+func (it *TNTPausedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EthcontractsPausedIterator) Close() error {
+func (it *TNTPausedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EthcontractsPaused represents a Paused event raised by the Ethcontracts contract.
-type EthcontractsPaused struct {
+// TNTPaused represents a Paused event raised by the TNT contract.
+type TNTPaused struct {
 	Account common.Address
 	Raw     types.Log // Blockchain specific contextual infos
 }
@@ -1354,21 +1354,21 @@ type EthcontractsPaused struct {
 // FilterPaused is a free log retrieval operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Ethcontracts *EthcontractsFilterer) FilterPaused(opts *bind.FilterOpts) (*EthcontractsPausedIterator, error) {
+func (_TNT *TNTFilterer) FilterPaused(opts *bind.FilterOpts) (*TNTPausedIterator, error) {
 
-	logs, sub, err := _Ethcontracts.contract.FilterLogs(opts, "Paused")
+	logs, sub, err := _TNT.contract.FilterLogs(opts, "Paused")
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsPausedIterator{contract: _Ethcontracts.contract, event: "Paused", logs: logs, sub: sub}, nil
+	return &TNTPausedIterator{contract: _TNT.contract, event: "Paused", logs: logs, sub: sub}, nil
 }
 
 // WatchPaused is a free log subscription operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Ethcontracts *EthcontractsFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<- *EthcontractsPaused) (event.Subscription, error) {
+func (_TNT *TNTFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<- *TNTPaused) (event.Subscription, error) {
 
-	logs, sub, err := _Ethcontracts.contract.WatchLogs(opts, "Paused")
+	logs, sub, err := _TNT.contract.WatchLogs(opts, "Paused")
 	if err != nil {
 		return nil, err
 	}
@@ -1378,8 +1378,8 @@ func (_Ethcontracts *EthcontractsFilterer) WatchPaused(opts *bind.WatchOpts, sin
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EthcontractsPaused)
-				if err := _Ethcontracts.contract.UnpackLog(event, "Paused", log); err != nil {
+				event := new(TNTPaused)
+				if err := _TNT.contract.UnpackLog(event, "Paused", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1400,9 +1400,9 @@ func (_Ethcontracts *EthcontractsFilterer) WatchPaused(opts *bind.WatchOpts, sin
 	}), nil
 }
 
-// EthcontractsPauserAddedIterator is returned from FilterPauserAdded and is used to iterate over the raw logs and unpacked data for PauserAdded events raised by the Ethcontracts contract.
-type EthcontractsPauserAddedIterator struct {
-	Event *EthcontractsPauserAdded // Event containing the contract specifics and raw log
+// TNTPauserAddedIterator is returned from FilterPauserAdded and is used to iterate over the raw logs and unpacked data for PauserAdded events raised by the TNT contract.
+type TNTPauserAddedIterator struct {
+	Event *TNTPauserAdded // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1416,7 +1416,7 @@ type EthcontractsPauserAddedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EthcontractsPauserAddedIterator) Next() bool {
+func (it *TNTPauserAddedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1425,7 +1425,7 @@ func (it *EthcontractsPauserAddedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EthcontractsPauserAdded)
+			it.Event = new(TNTPauserAdded)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1440,7 +1440,7 @@ func (it *EthcontractsPauserAddedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EthcontractsPauserAdded)
+		it.Event = new(TNTPauserAdded)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1456,19 +1456,19 @@ func (it *EthcontractsPauserAddedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EthcontractsPauserAddedIterator) Error() error {
+func (it *TNTPauserAddedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EthcontractsPauserAddedIterator) Close() error {
+func (it *TNTPauserAddedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EthcontractsPauserAdded represents a PauserAdded event raised by the Ethcontracts contract.
-type EthcontractsPauserAdded struct {
+// TNTPauserAdded represents a PauserAdded event raised by the TNT contract.
+type TNTPauserAdded struct {
 	Account common.Address
 	Raw     types.Log // Blockchain specific contextual infos
 }
@@ -1476,31 +1476,31 @@ type EthcontractsPauserAdded struct {
 // FilterPauserAdded is a free log retrieval operation binding the contract event 0x6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f8.
 //
 // Solidity: event PauserAdded(address indexed account)
-func (_Ethcontracts *EthcontractsFilterer) FilterPauserAdded(opts *bind.FilterOpts, account []common.Address) (*EthcontractsPauserAddedIterator, error) {
+func (_TNT *TNTFilterer) FilterPauserAdded(opts *bind.FilterOpts, account []common.Address) (*TNTPauserAddedIterator, error) {
 
 	var accountRule []interface{}
 	for _, accountItem := range account {
 		accountRule = append(accountRule, accountItem)
 	}
 
-	logs, sub, err := _Ethcontracts.contract.FilterLogs(opts, "PauserAdded", accountRule)
+	logs, sub, err := _TNT.contract.FilterLogs(opts, "PauserAdded", accountRule)
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsPauserAddedIterator{contract: _Ethcontracts.contract, event: "PauserAdded", logs: logs, sub: sub}, nil
+	return &TNTPauserAddedIterator{contract: _TNT.contract, event: "PauserAdded", logs: logs, sub: sub}, nil
 }
 
 // WatchPauserAdded is a free log subscription operation binding the contract event 0x6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f8.
 //
 // Solidity: event PauserAdded(address indexed account)
-func (_Ethcontracts *EthcontractsFilterer) WatchPauserAdded(opts *bind.WatchOpts, sink chan<- *EthcontractsPauserAdded, account []common.Address) (event.Subscription, error) {
+func (_TNT *TNTFilterer) WatchPauserAdded(opts *bind.WatchOpts, sink chan<- *TNTPauserAdded, account []common.Address) (event.Subscription, error) {
 
 	var accountRule []interface{}
 	for _, accountItem := range account {
 		accountRule = append(accountRule, accountItem)
 	}
 
-	logs, sub, err := _Ethcontracts.contract.WatchLogs(opts, "PauserAdded", accountRule)
+	logs, sub, err := _TNT.contract.WatchLogs(opts, "PauserAdded", accountRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1510,8 +1510,8 @@ func (_Ethcontracts *EthcontractsFilterer) WatchPauserAdded(opts *bind.WatchOpts
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EthcontractsPauserAdded)
-				if err := _Ethcontracts.contract.UnpackLog(event, "PauserAdded", log); err != nil {
+				event := new(TNTPauserAdded)
+				if err := _TNT.contract.UnpackLog(event, "PauserAdded", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1532,9 +1532,9 @@ func (_Ethcontracts *EthcontractsFilterer) WatchPauserAdded(opts *bind.WatchOpts
 	}), nil
 }
 
-// EthcontractsPauserRemovedIterator is returned from FilterPauserRemoved and is used to iterate over the raw logs and unpacked data for PauserRemoved events raised by the Ethcontracts contract.
-type EthcontractsPauserRemovedIterator struct {
-	Event *EthcontractsPauserRemoved // Event containing the contract specifics and raw log
+// TNTPauserRemovedIterator is returned from FilterPauserRemoved and is used to iterate over the raw logs and unpacked data for PauserRemoved events raised by the TNT contract.
+type TNTPauserRemovedIterator struct {
+	Event *TNTPauserRemoved // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1548,7 +1548,7 @@ type EthcontractsPauserRemovedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EthcontractsPauserRemovedIterator) Next() bool {
+func (it *TNTPauserRemovedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1557,7 +1557,7 @@ func (it *EthcontractsPauserRemovedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EthcontractsPauserRemoved)
+			it.Event = new(TNTPauserRemoved)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1572,7 +1572,7 @@ func (it *EthcontractsPauserRemovedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EthcontractsPauserRemoved)
+		it.Event = new(TNTPauserRemoved)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1588,19 +1588,19 @@ func (it *EthcontractsPauserRemovedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EthcontractsPauserRemovedIterator) Error() error {
+func (it *TNTPauserRemovedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EthcontractsPauserRemovedIterator) Close() error {
+func (it *TNTPauserRemovedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EthcontractsPauserRemoved represents a PauserRemoved event raised by the Ethcontracts contract.
-type EthcontractsPauserRemoved struct {
+// TNTPauserRemoved represents a PauserRemoved event raised by the TNT contract.
+type TNTPauserRemoved struct {
 	Account common.Address
 	Raw     types.Log // Blockchain specific contextual infos
 }
@@ -1608,31 +1608,31 @@ type EthcontractsPauserRemoved struct {
 // FilterPauserRemoved is a free log retrieval operation binding the contract event 0xcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e.
 //
 // Solidity: event PauserRemoved(address indexed account)
-func (_Ethcontracts *EthcontractsFilterer) FilterPauserRemoved(opts *bind.FilterOpts, account []common.Address) (*EthcontractsPauserRemovedIterator, error) {
+func (_TNT *TNTFilterer) FilterPauserRemoved(opts *bind.FilterOpts, account []common.Address) (*TNTPauserRemovedIterator, error) {
 
 	var accountRule []interface{}
 	for _, accountItem := range account {
 		accountRule = append(accountRule, accountItem)
 	}
 
-	logs, sub, err := _Ethcontracts.contract.FilterLogs(opts, "PauserRemoved", accountRule)
+	logs, sub, err := _TNT.contract.FilterLogs(opts, "PauserRemoved", accountRule)
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsPauserRemovedIterator{contract: _Ethcontracts.contract, event: "PauserRemoved", logs: logs, sub: sub}, nil
+	return &TNTPauserRemovedIterator{contract: _TNT.contract, event: "PauserRemoved", logs: logs, sub: sub}, nil
 }
 
 // WatchPauserRemoved is a free log subscription operation binding the contract event 0xcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e.
 //
 // Solidity: event PauserRemoved(address indexed account)
-func (_Ethcontracts *EthcontractsFilterer) WatchPauserRemoved(opts *bind.WatchOpts, sink chan<- *EthcontractsPauserRemoved, account []common.Address) (event.Subscription, error) {
+func (_TNT *TNTFilterer) WatchPauserRemoved(opts *bind.WatchOpts, sink chan<- *TNTPauserRemoved, account []common.Address) (event.Subscription, error) {
 
 	var accountRule []interface{}
 	for _, accountItem := range account {
 		accountRule = append(accountRule, accountItem)
 	}
 
-	logs, sub, err := _Ethcontracts.contract.WatchLogs(opts, "PauserRemoved", accountRule)
+	logs, sub, err := _TNT.contract.WatchLogs(opts, "PauserRemoved", accountRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1642,8 +1642,8 @@ func (_Ethcontracts *EthcontractsFilterer) WatchPauserRemoved(opts *bind.WatchOp
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EthcontractsPauserRemoved)
-				if err := _Ethcontracts.contract.UnpackLog(event, "PauserRemoved", log); err != nil {
+				event := new(TNTPauserRemoved)
+				if err := _TNT.contract.UnpackLog(event, "PauserRemoved", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1664,9 +1664,9 @@ func (_Ethcontracts *EthcontractsFilterer) WatchPauserRemoved(opts *bind.WatchOp
 	}), nil
 }
 
-// EthcontractsTransferIterator is returned from FilterTransfer and is used to iterate over the raw logs and unpacked data for Transfer events raised by the Ethcontracts contract.
-type EthcontractsTransferIterator struct {
-	Event *EthcontractsTransfer // Event containing the contract specifics and raw log
+// TNTTransferIterator is returned from FilterTransfer and is used to iterate over the raw logs and unpacked data for Transfer events raised by the TNT contract.
+type TNTTransferIterator struct {
+	Event *TNTTransfer // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1680,7 +1680,7 @@ type EthcontractsTransferIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EthcontractsTransferIterator) Next() bool {
+func (it *TNTTransferIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1689,7 +1689,7 @@ func (it *EthcontractsTransferIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EthcontractsTransfer)
+			it.Event = new(TNTTransfer)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1704,7 +1704,7 @@ func (it *EthcontractsTransferIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EthcontractsTransfer)
+		it.Event = new(TNTTransfer)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1720,19 +1720,19 @@ func (it *EthcontractsTransferIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EthcontractsTransferIterator) Error() error {
+func (it *TNTTransferIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EthcontractsTransferIterator) Close() error {
+func (it *TNTTransferIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EthcontractsTransfer represents a Transfer event raised by the Ethcontracts contract.
-type EthcontractsTransfer struct {
+// TNTTransfer represents a Transfer event raised by the TNT contract.
+type TNTTransfer struct {
 	From  common.Address
 	To    common.Address
 	Value *big.Int
@@ -1742,7 +1742,7 @@ type EthcontractsTransfer struct {
 // FilterTransfer is a free log retrieval operation binding the contract event 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef.
 //
 // Solidity: event Transfer(address indexed from, address indexed to, uint256 value)
-func (_Ethcontracts *EthcontractsFilterer) FilterTransfer(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*EthcontractsTransferIterator, error) {
+func (_TNT *TNTFilterer) FilterTransfer(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*TNTTransferIterator, error) {
 
 	var fromRule []interface{}
 	for _, fromItem := range from {
@@ -1753,17 +1753,17 @@ func (_Ethcontracts *EthcontractsFilterer) FilterTransfer(opts *bind.FilterOpts,
 		toRule = append(toRule, toItem)
 	}
 
-	logs, sub, err := _Ethcontracts.contract.FilterLogs(opts, "Transfer", fromRule, toRule)
+	logs, sub, err := _TNT.contract.FilterLogs(opts, "Transfer", fromRule, toRule)
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsTransferIterator{contract: _Ethcontracts.contract, event: "Transfer", logs: logs, sub: sub}, nil
+	return &TNTTransferIterator{contract: _TNT.contract, event: "Transfer", logs: logs, sub: sub}, nil
 }
 
 // WatchTransfer is a free log subscription operation binding the contract event 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef.
 //
 // Solidity: event Transfer(address indexed from, address indexed to, uint256 value)
-func (_Ethcontracts *EthcontractsFilterer) WatchTransfer(opts *bind.WatchOpts, sink chan<- *EthcontractsTransfer, from []common.Address, to []common.Address) (event.Subscription, error) {
+func (_TNT *TNTFilterer) WatchTransfer(opts *bind.WatchOpts, sink chan<- *TNTTransfer, from []common.Address, to []common.Address) (event.Subscription, error) {
 
 	var fromRule []interface{}
 	for _, fromItem := range from {
@@ -1774,7 +1774,7 @@ func (_Ethcontracts *EthcontractsFilterer) WatchTransfer(opts *bind.WatchOpts, s
 		toRule = append(toRule, toItem)
 	}
 
-	logs, sub, err := _Ethcontracts.contract.WatchLogs(opts, "Transfer", fromRule, toRule)
+	logs, sub, err := _TNT.contract.WatchLogs(opts, "Transfer", fromRule, toRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1784,8 +1784,8 @@ func (_Ethcontracts *EthcontractsFilterer) WatchTransfer(opts *bind.WatchOpts, s
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EthcontractsTransfer)
-				if err := _Ethcontracts.contract.UnpackLog(event, "Transfer", log); err != nil {
+				event := new(TNTTransfer)
+				if err := _TNT.contract.UnpackLog(event, "Transfer", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1806,9 +1806,9 @@ func (_Ethcontracts *EthcontractsFilterer) WatchTransfer(opts *bind.WatchOpts, s
 	}), nil
 }
 
-// EthcontractsUnpausedIterator is returned from FilterUnpaused and is used to iterate over the raw logs and unpacked data for Unpaused events raised by the Ethcontracts contract.
-type EthcontractsUnpausedIterator struct {
-	Event *EthcontractsUnpaused // Event containing the contract specifics and raw log
+// TNTUnpausedIterator is returned from FilterUnpaused and is used to iterate over the raw logs and unpacked data for Unpaused events raised by the TNT contract.
+type TNTUnpausedIterator struct {
+	Event *TNTUnpaused // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1822,7 +1822,7 @@ type EthcontractsUnpausedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EthcontractsUnpausedIterator) Next() bool {
+func (it *TNTUnpausedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1831,7 +1831,7 @@ func (it *EthcontractsUnpausedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EthcontractsUnpaused)
+			it.Event = new(TNTUnpaused)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1846,7 +1846,7 @@ func (it *EthcontractsUnpausedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EthcontractsUnpaused)
+		it.Event = new(TNTUnpaused)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1862,19 +1862,19 @@ func (it *EthcontractsUnpausedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EthcontractsUnpausedIterator) Error() error {
+func (it *TNTUnpausedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EthcontractsUnpausedIterator) Close() error {
+func (it *TNTUnpausedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EthcontractsUnpaused represents a Unpaused event raised by the Ethcontracts contract.
-type EthcontractsUnpaused struct {
+// TNTUnpaused represents a Unpaused event raised by the TNT contract.
+type TNTUnpaused struct {
 	Account common.Address
 	Raw     types.Log // Blockchain specific contextual infos
 }
@@ -1882,21 +1882,21 @@ type EthcontractsUnpaused struct {
 // FilterUnpaused is a free log retrieval operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Ethcontracts *EthcontractsFilterer) FilterUnpaused(opts *bind.FilterOpts) (*EthcontractsUnpausedIterator, error) {
+func (_TNT *TNTFilterer) FilterUnpaused(opts *bind.FilterOpts) (*TNTUnpausedIterator, error) {
 
-	logs, sub, err := _Ethcontracts.contract.FilterLogs(opts, "Unpaused")
+	logs, sub, err := _TNT.contract.FilterLogs(opts, "Unpaused")
 	if err != nil {
 		return nil, err
 	}
-	return &EthcontractsUnpausedIterator{contract: _Ethcontracts.contract, event: "Unpaused", logs: logs, sub: sub}, nil
+	return &TNTUnpausedIterator{contract: _TNT.contract, event: "Unpaused", logs: logs, sub: sub}, nil
 }
 
 // WatchUnpaused is a free log subscription operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Ethcontracts *EthcontractsFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan<- *EthcontractsUnpaused) (event.Subscription, error) {
+func (_TNT *TNTFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan<- *TNTUnpaused) (event.Subscription, error) {
 
-	logs, sub, err := _Ethcontracts.contract.WatchLogs(opts, "Unpaused")
+	logs, sub, err := _TNT.contract.WatchLogs(opts, "Unpaused")
 	if err != nil {
 		return nil, err
 	}
@@ -1906,8 +1906,8 @@ func (_Ethcontracts *EthcontractsFilterer) WatchUnpaused(opts *bind.WatchOpts, s
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EthcontractsUnpaused)
-				if err := _Ethcontracts.contract.UnpackLog(event, "Unpaused", log); err != nil {
+				event := new(TNTUnpaused)
+				if err := _TNT.contract.UnpackLog(event, "Unpaused", log); err != nil {
 					return err
 				}
 				event.Raw = log
