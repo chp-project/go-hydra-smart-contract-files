@@ -78,6 +78,20 @@ func (eth *EthClient) HighestBlock() (*big.Int, error) {
 	return header.Number, nil
 }
 
+//GetLastMintedAt : returns the ethereum block of the last minting event. Used for timing mint events
+func (eth *EthClient) GetLastMintedAt() (*big.Int, error) {
+	tokenAddr := common.HexToAddress(eth.TokenContractAddr)
+	tokenInstance, err := NewTNT(tokenAddr, &eth.Client)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return nil, err
+	}
+	balance, err := tokenInstance.LastMintedAtBlock(&bind.CallOpts{})
+	if util.LoggerError(eth.Logger, err) != nil {
+		return nil, err
+	}
+	return balance, nil
+}
+
 //GetPastNodesStakedEvents : gets past nodes staking events
 func (eth *EthClient) GetPastNodesStakedEvents() ([]ChpRegistryNodeStaked, error) {
 	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
