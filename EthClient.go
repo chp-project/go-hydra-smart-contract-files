@@ -6,6 +6,8 @@ import (
 	"math"
 	"math/big"
 
+	solsha3 "github.com/miguelmota/go-solidity-sha3"
+
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -21,6 +23,7 @@ import (
 //EthClient : maintains connection information
 type EthClient struct {
 	EthURL               string
+	EthPrivateKey        string
 	TokenContractAddr    string
 	RegistryContractAddr string
 	Logger               log.Logger
@@ -28,18 +31,55 @@ type EthClient struct {
 }
 
 //NewClient : creates a new ethclient with a connection to a particular url and particular token and registry contracts
-func NewClient(ethURL string, tokenContract string, registryContract string, logger log.Logger) (*EthClient, error) {
+func NewClient(ethURL string, ethPrivateKey string, tokenContract string, registryContract string, logger log.Logger) (*EthClient, error) {
 	client, err := ethclient.Dial(ethURL)
 	if util.LoggerError(logger, err) != nil {
 		return nil, err
 	}
 	return &EthClient{
 		EthURL:               ethURL,
+		EthPrivateKey:        ethPrivateKey,
 		TokenContractAddr:    tokenContract,
 		RegistryContractAddr: registryContract,
 		Logger:               logger,
 		Client:               *client,
 	}, nil
+}
+
+//Mint : mints tokens for node reward candidates
+func (eth *EthClient) Mint(rewardCandidates []common.Address, rcHash []byte, sigs [][]byte) error {
+	tokenInstance, err := NewTNT(common.HexToAddress(eth.TokenContractAddr), &eth.Client)
+	privateKey, _ := crypto.HexToECDSA(eth.EthPrivateKey)
+	publicKey := privateKey.Public()
+	publicKeyECDSA, _ := publicKey.(*ecdsa.PublicKey)
+
+	fromAddress := crypto.PubkeyToAddress(*publicKeyECDSA)
+
+	// Get nonce for fromAddress
+	nonce, err := eth.Client.PendingNonceAt(context.Background(), fromAddress)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+
+	// Get suggested gas price
+	gasPrice, err := eth.Client.SuggestGasPrice(context.Background())
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+
+	/// New keyed transactor
+	transactOps := bind.NewKeyedTransactor(privateKey)
+	transactOps.Nonce = big.NewInt(int64(nonce))
+	transactOps.Value = big.NewInt(0)
+	transactOps.GasLimit = uint64(300000)
+	transactOps.GasPrice = gasPrice
+	var rcHashBytes [32]byte
+	copy(rcHashBytes[:], rcHash[:32])
+	_, err = tokenInstance.Mint(transactOps, rewardCandidates, rcHashBytes, sigs[0], sigs[1], sigs[2], sigs[3], sigs[4], sigs[5])
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+	return nil
 }
 
 //CheckEthBalance : Check Ethereum balance at a hex address
@@ -315,4 +355,29 @@ func PrivateKeyToAddress(privKey string) string {
 	publicKeyECDSA, _ := publicKey.(*ecdsa.PublicKey)
 	address := crypto.PubkeyToAddress(*publicKeyECDSA).Hex()
 	return address
+}
+
+//AddressesToHash : converts hex addresses to hash for minting
+func AddressesToHash(addrs []common.Address) []byte {
+	addrStrs := make([]string, 0)
+	for _, addr := range addrs {
+		addrStrs = append(addrStrs, addr.Hex())
+	}
+	hashAddr := solsha3.SoliditySHA3(
+		// types
+		[]string{"address[]"},
+		// values
+		[]interface{}{addrStrs},
+	)
+	return hashAddr
+}
+
+//SignMsg : produces ethereum signature of msg using corresponding privKey
+func SignMsg(msg []byte, privKey string) ([]byte, error) {
+	privateKey, err := crypto.HexToECDSA(privKey)
+	if err != nil {
+		return []byte{}, err
+	}
+	signature, err := crypto.Sign(msg, privateKey)
+	return signature, err
 }
