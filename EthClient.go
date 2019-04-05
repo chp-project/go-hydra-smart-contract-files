@@ -125,7 +125,7 @@ func (eth *EthClient) GetLastMintedAt() (*big.Int, error) {
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
-	balance, err := tokenInstance.LastMintedAtBlock(&bind.CallOpts{})
+	balance, err := tokenInstance.NodeLastMintedAtBlock(&bind.CallOpts{})
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
