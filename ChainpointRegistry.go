@@ -28,7 +28,7 @@ var (
 )
 
 // ChpRegistryABI is the input ABI used to generate the binding from.
-const ChpRegistryABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"nodes\",\"outputs\":[{\"name\":\"nodeIp\",\"type\":\"uint32\"},{\"name\":\"nodePublicKey\",\"type\":\"bytes32\"},{\"name\":\"isStaked\",\"type\":\"bool\"},{\"name\":\"amountStaked\",\"type\":\"uint256\"},{\"name\":\"stakeLockedUntil\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isPauser\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint32\"}],\"name\":\"allocatedIps\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renouncePauser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"whitelistedCoresArr\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"CORE_STAKING_DURATION\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"addPauser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"cores\",\"outputs\":[{\"name\":\"coreIp\",\"type\":\"uint32\"},{\"name\":\"corePublicKey\",\"type\":\"bytes32\"},{\"name\":\"isStaked\",\"type\":\"bool\"},{\"name\":\"isHealthy\",\"type\":\"bool\"},{\"name\":\"amountStaked\",\"type\":\"uint256\"},{\"name\":\"stakeLockedUntil\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"NODE_STAKING_AMOUNT\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"coresArr\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"CORE_STAKING_AMOUNT\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"registryAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"NODE_STAKING_DURATION\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_nodeIp\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"_nodePublicKey\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"_amountStaked\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_duration\",\"type\":\"uint256\"}],\"name\":\"NodeStaked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_nodeIp\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"_publicKey\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"_amountStaked\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_duration\",\"type\":\"uint256\"}],\"name\":\"NodeStakeUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_coreIp\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"_corePublicKey\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"_isHealthy\",\"type\":\"bool\"},{\"indexed\":false,\"name\":\"_amountStaked\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_duration\",\"type\":\"uint256\"}],\"name\":\"CoreStaked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_coreIp\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"_corePublicKey\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"_isHealthy\",\"type\":\"bool\"},{\"indexed\":false,\"name\":\"_amountStaked\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_duration\",\"type\":\"uint256\"}],\"name\":\"CoreStakeUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"PauserAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"PauserRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"_nodeIp\",\"type\":\"uint32\"},{\"name\":\"_nodePublicKey\",\"type\":\"bytes32\"}],\"name\":\"stake\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_coreIp\",\"type\":\"uint32\"},{\"name\":\"_corePublicKey\",\"type\":\"bytes32\"}],\"name\":\"stakeCore\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_nodeIp\",\"type\":\"uint32\"}],\"name\":\"updateStake\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_coreIp\",\"type\":\"uint32\"}],\"name\":\"updateStakeCore\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"unStake\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"unStakeCore\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"reward\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"totalStakedFor\",\"outputs\":[{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"unlocks_at\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getCoreCount\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"isHealthyCore\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"whitelistCore\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]"
+const ChpRegistryABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"nodes\",\"outputs\":[{\"name\":\"nodeIp\",\"type\":\"uint32\"},{\"name\":\"isStaked\",\"type\":\"bool\"},{\"name\":\"amountStaked\",\"type\":\"uint256\"},{\"name\":\"stakeLockedUntil\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isPauser\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint32\"}],\"name\":\"allocatedIps\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renouncePauser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"whitelistedCoresArr\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"CORE_STAKING_DURATION\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"account\",\"type\":\"address\"}],\"name\":\"addPauser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"cores\",\"outputs\":[{\"name\":\"coreIp\",\"type\":\"uint32\"},{\"name\":\"isStaked\",\"type\":\"bool\"},{\"name\":\"isHealthy\",\"type\":\"bool\"},{\"name\":\"amountStaked\",\"type\":\"uint256\"},{\"name\":\"stakeLockedUntil\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"NODE_STAKING_AMOUNT\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"coresArr\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"CORE_STAKING_AMOUNT\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"registryAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"NODE_STAKING_DURATION\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_nodeIp\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"_amountStaked\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_duration\",\"type\":\"uint256\"}],\"name\":\"NodeStaked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_nodeIp\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"_amountStaked\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_duration\",\"type\":\"uint256\"}],\"name\":\"NodeStakeUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_nodeIp\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"_amountStaked\",\"type\":\"uint256\"}],\"name\":\"NodeUnStaked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_coreIp\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"_isHealthy\",\"type\":\"bool\"},{\"indexed\":false,\"name\":\"_amountStaked\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_duration\",\"type\":\"uint256\"}],\"name\":\"CoreStaked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_coreIp\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"_isHealthy\",\"type\":\"bool\"},{\"indexed\":false,\"name\":\"_amountStaked\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_duration\",\"type\":\"uint256\"}],\"name\":\"CoreStakeUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_coreIp\",\"type\":\"uint32\"},{\"indexed\":false,\"name\":\"_amountStaked\",\"type\":\"uint256\"}],\"name\":\"CoreUnStaked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"PauserAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"PauserRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"_nodeIp\",\"type\":\"uint32\"}],\"name\":\"stake\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_coreIp\",\"type\":\"uint32\"}],\"name\":\"stakeCore\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_nodeIp\",\"type\":\"uint32\"}],\"name\":\"updateStake\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_coreIp\",\"type\":\"uint32\"}],\"name\":\"updateStakeCore\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"unStake\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"unStakeCore\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"totalStakedFor\",\"outputs\":[{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"unlocks_at\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getCoreCount\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"isHealthyCore\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"whitelistCore\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]"
 
 // ChpRegistry is an auto generated Go binding around an Ethereum contract.
 type ChpRegistry struct {
@@ -304,10 +304,9 @@ func (_ChpRegistry *ChpRegistryCallerSession) AllocatedIps(arg0 uint32) (bool, e
 
 // Cores is a free data retrieval call binding the contract method 0x85ad32c4.
 //
-// Solidity: function cores(address ) constant returns(uint32 coreIp, bytes32 corePublicKey, bool isStaked, bool isHealthy, uint256 amountStaked, uint256 stakeLockedUntil)
+// Solidity: function cores(address ) constant returns(uint32 coreIp, bool isStaked, bool isHealthy, uint256 amountStaked, uint256 stakeLockedUntil)
 func (_ChpRegistry *ChpRegistryCaller) Cores(opts *bind.CallOpts, arg0 common.Address) (struct {
 	CoreIp           uint32
-	CorePublicKey    [32]byte
 	IsStaked         bool
 	IsHealthy        bool
 	AmountStaked     *big.Int
@@ -315,7 +314,6 @@ func (_ChpRegistry *ChpRegistryCaller) Cores(opts *bind.CallOpts, arg0 common.Ad
 }, error) {
 	ret := new(struct {
 		CoreIp           uint32
-		CorePublicKey    [32]byte
 		IsStaked         bool
 		IsHealthy        bool
 		AmountStaked     *big.Int
@@ -328,10 +326,9 @@ func (_ChpRegistry *ChpRegistryCaller) Cores(opts *bind.CallOpts, arg0 common.Ad
 
 // Cores is a free data retrieval call binding the contract method 0x85ad32c4.
 //
-// Solidity: function cores(address ) constant returns(uint32 coreIp, bytes32 corePublicKey, bool isStaked, bool isHealthy, uint256 amountStaked, uint256 stakeLockedUntil)
+// Solidity: function cores(address ) constant returns(uint32 coreIp, bool isStaked, bool isHealthy, uint256 amountStaked, uint256 stakeLockedUntil)
 func (_ChpRegistry *ChpRegistrySession) Cores(arg0 common.Address) (struct {
 	CoreIp           uint32
-	CorePublicKey    [32]byte
 	IsStaked         bool
 	IsHealthy        bool
 	AmountStaked     *big.Int
@@ -342,10 +339,9 @@ func (_ChpRegistry *ChpRegistrySession) Cores(arg0 common.Address) (struct {
 
 // Cores is a free data retrieval call binding the contract method 0x85ad32c4.
 //
-// Solidity: function cores(address ) constant returns(uint32 coreIp, bytes32 corePublicKey, bool isStaked, bool isHealthy, uint256 amountStaked, uint256 stakeLockedUntil)
+// Solidity: function cores(address ) constant returns(uint32 coreIp, bool isStaked, bool isHealthy, uint256 amountStaked, uint256 stakeLockedUntil)
 func (_ChpRegistry *ChpRegistryCallerSession) Cores(arg0 common.Address) (struct {
 	CoreIp           uint32
-	CorePublicKey    [32]byte
 	IsStaked         bool
 	IsHealthy        bool
 	AmountStaked     *big.Int
@@ -512,17 +508,15 @@ func (_ChpRegistry *ChpRegistryCallerSession) Name() (string, error) {
 
 // Nodes is a free data retrieval call binding the contract method 0x189a5a17.
 //
-// Solidity: function nodes(address ) constant returns(uint32 nodeIp, bytes32 nodePublicKey, bool isStaked, uint256 amountStaked, uint256 stakeLockedUntil)
+// Solidity: function nodes(address ) constant returns(uint32 nodeIp, bool isStaked, uint256 amountStaked, uint256 stakeLockedUntil)
 func (_ChpRegistry *ChpRegistryCaller) Nodes(opts *bind.CallOpts, arg0 common.Address) (struct {
 	NodeIp           uint32
-	NodePublicKey    [32]byte
 	IsStaked         bool
 	AmountStaked     *big.Int
 	StakeLockedUntil *big.Int
 }, error) {
 	ret := new(struct {
 		NodeIp           uint32
-		NodePublicKey    [32]byte
 		IsStaked         bool
 		AmountStaked     *big.Int
 		StakeLockedUntil *big.Int
@@ -534,10 +528,9 @@ func (_ChpRegistry *ChpRegistryCaller) Nodes(opts *bind.CallOpts, arg0 common.Ad
 
 // Nodes is a free data retrieval call binding the contract method 0x189a5a17.
 //
-// Solidity: function nodes(address ) constant returns(uint32 nodeIp, bytes32 nodePublicKey, bool isStaked, uint256 amountStaked, uint256 stakeLockedUntil)
+// Solidity: function nodes(address ) constant returns(uint32 nodeIp, bool isStaked, uint256 amountStaked, uint256 stakeLockedUntil)
 func (_ChpRegistry *ChpRegistrySession) Nodes(arg0 common.Address) (struct {
 	NodeIp           uint32
-	NodePublicKey    [32]byte
 	IsStaked         bool
 	AmountStaked     *big.Int
 	StakeLockedUntil *big.Int
@@ -547,10 +540,9 @@ func (_ChpRegistry *ChpRegistrySession) Nodes(arg0 common.Address) (struct {
 
 // Nodes is a free data retrieval call binding the contract method 0x189a5a17.
 //
-// Solidity: function nodes(address ) constant returns(uint32 nodeIp, bytes32 nodePublicKey, bool isStaked, uint256 amountStaked, uint256 stakeLockedUntil)
+// Solidity: function nodes(address ) constant returns(uint32 nodeIp, bool isStaked, uint256 amountStaked, uint256 stakeLockedUntil)
 func (_ChpRegistry *ChpRegistryCallerSession) Nodes(arg0 common.Address) (struct {
 	NodeIp           uint32
-	NodePublicKey    [32]byte
 	IsStaked         bool
 	AmountStaked     *big.Int
 	StakeLockedUntil *big.Int
@@ -634,32 +626,6 @@ func (_ChpRegistry *ChpRegistrySession) RegistryAddress() (common.Address, error
 // Solidity: function registryAddress() constant returns(address)
 func (_ChpRegistry *ChpRegistryCallerSession) RegistryAddress() (common.Address, error) {
 	return _ChpRegistry.Contract.RegistryAddress(&_ChpRegistry.CallOpts)
-}
-
-// Reward is a free data retrieval call binding the contract method 0x228cb733.
-//
-// Solidity: function reward() constant returns(bool)
-func (_ChpRegistry *ChpRegistryCaller) Reward(opts *bind.CallOpts) (bool, error) {
-	var (
-		ret0 = new(bool)
-	)
-	out := ret0
-	err := _ChpRegistry.contract.Call(opts, out, "reward")
-	return *ret0, err
-}
-
-// Reward is a free data retrieval call binding the contract method 0x228cb733.
-//
-// Solidity: function reward() constant returns(bool)
-func (_ChpRegistry *ChpRegistrySession) Reward() (bool, error) {
-	return _ChpRegistry.Contract.Reward(&_ChpRegistry.CallOpts)
-}
-
-// Reward is a free data retrieval call binding the contract method 0x228cb733.
-//
-// Solidity: function reward() constant returns(bool)
-func (_ChpRegistry *ChpRegistryCallerSession) Reward() (bool, error) {
-	return _ChpRegistry.Contract.Reward(&_ChpRegistry.CallOpts)
 }
 
 // Token is a free data retrieval call binding the contract method 0xfc0c546a.
@@ -834,46 +800,46 @@ func (_ChpRegistry *ChpRegistryTransactorSession) RenouncePauser() (*types.Trans
 	return _ChpRegistry.Contract.RenouncePauser(&_ChpRegistry.TransactOpts)
 }
 
-// Stake is a paid mutator transaction binding the contract method 0x5cc3ba0f.
+// Stake is a paid mutator transaction binding the contract method 0x7fcfb7c2.
 //
-// Solidity: function stake(uint32 _nodeIp, bytes32 _nodePublicKey) returns(bool)
-func (_ChpRegistry *ChpRegistryTransactor) Stake(opts *bind.TransactOpts, _nodeIp uint32, _nodePublicKey [32]byte) (*types.Transaction, error) {
-	return _ChpRegistry.contract.Transact(opts, "stake", _nodeIp, _nodePublicKey)
+// Solidity: function stake(uint32 _nodeIp) returns(bool)
+func (_ChpRegistry *ChpRegistryTransactor) Stake(opts *bind.TransactOpts, _nodeIp uint32) (*types.Transaction, error) {
+	return _ChpRegistry.contract.Transact(opts, "stake", _nodeIp)
 }
 
-// Stake is a paid mutator transaction binding the contract method 0x5cc3ba0f.
+// Stake is a paid mutator transaction binding the contract method 0x7fcfb7c2.
 //
-// Solidity: function stake(uint32 _nodeIp, bytes32 _nodePublicKey) returns(bool)
-func (_ChpRegistry *ChpRegistrySession) Stake(_nodeIp uint32, _nodePublicKey [32]byte) (*types.Transaction, error) {
-	return _ChpRegistry.Contract.Stake(&_ChpRegistry.TransactOpts, _nodeIp, _nodePublicKey)
+// Solidity: function stake(uint32 _nodeIp) returns(bool)
+func (_ChpRegistry *ChpRegistrySession) Stake(_nodeIp uint32) (*types.Transaction, error) {
+	return _ChpRegistry.Contract.Stake(&_ChpRegistry.TransactOpts, _nodeIp)
 }
 
-// Stake is a paid mutator transaction binding the contract method 0x5cc3ba0f.
+// Stake is a paid mutator transaction binding the contract method 0x7fcfb7c2.
 //
-// Solidity: function stake(uint32 _nodeIp, bytes32 _nodePublicKey) returns(bool)
-func (_ChpRegistry *ChpRegistryTransactorSession) Stake(_nodeIp uint32, _nodePublicKey [32]byte) (*types.Transaction, error) {
-	return _ChpRegistry.Contract.Stake(&_ChpRegistry.TransactOpts, _nodeIp, _nodePublicKey)
+// Solidity: function stake(uint32 _nodeIp) returns(bool)
+func (_ChpRegistry *ChpRegistryTransactorSession) Stake(_nodeIp uint32) (*types.Transaction, error) {
+	return _ChpRegistry.Contract.Stake(&_ChpRegistry.TransactOpts, _nodeIp)
 }
 
-// StakeCore is a paid mutator transaction binding the contract method 0x00a843b0.
+// StakeCore is a paid mutator transaction binding the contract method 0xecb9c311.
 //
-// Solidity: function stakeCore(uint32 _coreIp, bytes32 _corePublicKey) returns(bool)
-func (_ChpRegistry *ChpRegistryTransactor) StakeCore(opts *bind.TransactOpts, _coreIp uint32, _corePublicKey [32]byte) (*types.Transaction, error) {
-	return _ChpRegistry.contract.Transact(opts, "stakeCore", _coreIp, _corePublicKey)
+// Solidity: function stakeCore(uint32 _coreIp) returns(bool)
+func (_ChpRegistry *ChpRegistryTransactor) StakeCore(opts *bind.TransactOpts, _coreIp uint32) (*types.Transaction, error) {
+	return _ChpRegistry.contract.Transact(opts, "stakeCore", _coreIp)
 }
 
-// StakeCore is a paid mutator transaction binding the contract method 0x00a843b0.
+// StakeCore is a paid mutator transaction binding the contract method 0xecb9c311.
 //
-// Solidity: function stakeCore(uint32 _coreIp, bytes32 _corePublicKey) returns(bool)
-func (_ChpRegistry *ChpRegistrySession) StakeCore(_coreIp uint32, _corePublicKey [32]byte) (*types.Transaction, error) {
-	return _ChpRegistry.Contract.StakeCore(&_ChpRegistry.TransactOpts, _coreIp, _corePublicKey)
+// Solidity: function stakeCore(uint32 _coreIp) returns(bool)
+func (_ChpRegistry *ChpRegistrySession) StakeCore(_coreIp uint32) (*types.Transaction, error) {
+	return _ChpRegistry.Contract.StakeCore(&_ChpRegistry.TransactOpts, _coreIp)
 }
 
-// StakeCore is a paid mutator transaction binding the contract method 0x00a843b0.
+// StakeCore is a paid mutator transaction binding the contract method 0xecb9c311.
 //
-// Solidity: function stakeCore(uint32 _coreIp, bytes32 _corePublicKey) returns(bool)
-func (_ChpRegistry *ChpRegistryTransactorSession) StakeCore(_coreIp uint32, _corePublicKey [32]byte) (*types.Transaction, error) {
-	return _ChpRegistry.Contract.StakeCore(&_ChpRegistry.TransactOpts, _coreIp, _corePublicKey)
+// Solidity: function stakeCore(uint32 _coreIp) returns(bool)
+func (_ChpRegistry *ChpRegistryTransactorSession) StakeCore(_coreIp uint32) (*types.Transaction, error) {
+	return _ChpRegistry.Contract.StakeCore(&_ChpRegistry.TransactOpts, _coreIp)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
@@ -1092,18 +1058,17 @@ func (it *ChpRegistryCoreStakeUpdatedIterator) Close() error {
 
 // ChpRegistryCoreStakeUpdated represents a CoreStakeUpdated event raised by the ChpRegistry contract.
 type ChpRegistryCoreStakeUpdated struct {
-	Sender        common.Address
-	CoreIp        uint32
-	CorePublicKey [32]byte
-	IsHealthy     bool
-	AmountStaked  *big.Int
-	Duration      *big.Int
-	Raw           types.Log // Blockchain specific contextual infos
+	Sender       common.Address
+	CoreIp       uint32
+	IsHealthy    bool
+	AmountStaked *big.Int
+	Duration     *big.Int
+	Raw          types.Log // Blockchain specific contextual infos
 }
 
-// FilterCoreStakeUpdated is a free log retrieval operation binding the contract event 0xbc22aa0c966480499a6de434ae62991e3a2454d693e4da34f79c7801378f50e0.
+// FilterCoreStakeUpdated is a free log retrieval operation binding the contract event 0x72da1794d27e553658e2fa30770730ecdbf2f0b8dfd8540094ca9bc75d8ae0f6.
 //
-// Solidity: event CoreStakeUpdated(address indexed _sender, uint32 _coreIp, bytes32 _corePublicKey, bool _isHealthy, uint256 _amountStaked, uint256 _duration)
+// Solidity: event CoreStakeUpdated(address indexed _sender, uint32 _coreIp, bool _isHealthy, uint256 _amountStaked, uint256 _duration)
 func (_ChpRegistry *ChpRegistryFilterer) FilterCoreStakeUpdated(opts *bind.FilterOpts, _sender []common.Address) (*ChpRegistryCoreStakeUpdatedIterator, error) {
 
 	var _senderRule []interface{}
@@ -1118,9 +1083,9 @@ func (_ChpRegistry *ChpRegistryFilterer) FilterCoreStakeUpdated(opts *bind.Filte
 	return &ChpRegistryCoreStakeUpdatedIterator{contract: _ChpRegistry.contract, event: "CoreStakeUpdated", logs: logs, sub: sub}, nil
 }
 
-// WatchCoreStakeUpdated is a free log subscription operation binding the contract event 0xbc22aa0c966480499a6de434ae62991e3a2454d693e4da34f79c7801378f50e0.
+// WatchCoreStakeUpdated is a free log subscription operation binding the contract event 0x72da1794d27e553658e2fa30770730ecdbf2f0b8dfd8540094ca9bc75d8ae0f6.
 //
-// Solidity: event CoreStakeUpdated(address indexed _sender, uint32 _coreIp, bytes32 _corePublicKey, bool _isHealthy, uint256 _amountStaked, uint256 _duration)
+// Solidity: event CoreStakeUpdated(address indexed _sender, uint32 _coreIp, bool _isHealthy, uint256 _amountStaked, uint256 _duration)
 func (_ChpRegistry *ChpRegistryFilterer) WatchCoreStakeUpdated(opts *bind.WatchOpts, sink chan<- *ChpRegistryCoreStakeUpdated, _sender []common.Address) (event.Subscription, error) {
 
 	var _senderRule []interface{}
@@ -1229,18 +1194,17 @@ func (it *ChpRegistryCoreStakedIterator) Close() error {
 
 // ChpRegistryCoreStaked represents a CoreStaked event raised by the ChpRegistry contract.
 type ChpRegistryCoreStaked struct {
-	Sender        common.Address
-	CoreIp        uint32
-	CorePublicKey [32]byte
-	IsHealthy     bool
-	AmountStaked  *big.Int
-	Duration      *big.Int
-	Raw           types.Log // Blockchain specific contextual infos
+	Sender       common.Address
+	CoreIp       uint32
+	IsHealthy    bool
+	AmountStaked *big.Int
+	Duration     *big.Int
+	Raw          types.Log // Blockchain specific contextual infos
 }
 
-// FilterCoreStaked is a free log retrieval operation binding the contract event 0x4516970003eefba0d49ed47be7613fff7206777adebf8662c7e1e5d1c4377d25.
+// FilterCoreStaked is a free log retrieval operation binding the contract event 0x796a2d9218734911a0d7003fbefb8d548e07e43561ca84c46eebbecb27360b77.
 //
-// Solidity: event CoreStaked(address indexed _sender, uint32 _coreIp, bytes32 _corePublicKey, bool _isHealthy, uint256 _amountStaked, uint256 _duration)
+// Solidity: event CoreStaked(address indexed _sender, uint32 _coreIp, bool _isHealthy, uint256 _amountStaked, uint256 _duration)
 func (_ChpRegistry *ChpRegistryFilterer) FilterCoreStaked(opts *bind.FilterOpts, _sender []common.Address) (*ChpRegistryCoreStakedIterator, error) {
 
 	var _senderRule []interface{}
@@ -1255,9 +1219,9 @@ func (_ChpRegistry *ChpRegistryFilterer) FilterCoreStaked(opts *bind.FilterOpts,
 	return &ChpRegistryCoreStakedIterator{contract: _ChpRegistry.contract, event: "CoreStaked", logs: logs, sub: sub}, nil
 }
 
-// WatchCoreStaked is a free log subscription operation binding the contract event 0x4516970003eefba0d49ed47be7613fff7206777adebf8662c7e1e5d1c4377d25.
+// WatchCoreStaked is a free log subscription operation binding the contract event 0x796a2d9218734911a0d7003fbefb8d548e07e43561ca84c46eebbecb27360b77.
 //
-// Solidity: event CoreStaked(address indexed _sender, uint32 _coreIp, bytes32 _corePublicKey, bool _isHealthy, uint256 _amountStaked, uint256 _duration)
+// Solidity: event CoreStaked(address indexed _sender, uint32 _coreIp, bool _isHealthy, uint256 _amountStaked, uint256 _duration)
 func (_ChpRegistry *ChpRegistryFilterer) WatchCoreStaked(opts *bind.WatchOpts, sink chan<- *ChpRegistryCoreStaked, _sender []common.Address) (event.Subscription, error) {
 
 	var _senderRule []interface{}
@@ -1277,6 +1241,140 @@ func (_ChpRegistry *ChpRegistryFilterer) WatchCoreStaked(opts *bind.WatchOpts, s
 				// New log arrived, parse the event and forward to the user
 				event := new(ChpRegistryCoreStaked)
 				if err := _ChpRegistry.contract.UnpackLog(event, "CoreStaked", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ChpRegistryCoreUnStakedIterator is returned from FilterCoreUnStaked and is used to iterate over the raw logs and unpacked data for CoreUnStaked events raised by the ChpRegistry contract.
+type ChpRegistryCoreUnStakedIterator struct {
+	Event *ChpRegistryCoreUnStaked // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *ChpRegistryCoreUnStakedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(ChpRegistryCoreUnStaked)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(ChpRegistryCoreUnStaked)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *ChpRegistryCoreUnStakedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *ChpRegistryCoreUnStakedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// ChpRegistryCoreUnStaked represents a CoreUnStaked event raised by the ChpRegistry contract.
+type ChpRegistryCoreUnStaked struct {
+	Sender       common.Address
+	CoreIp       uint32
+	AmountStaked *big.Int
+	Raw          types.Log // Blockchain specific contextual infos
+}
+
+// FilterCoreUnStaked is a free log retrieval operation binding the contract event 0x341d92626b7f883cbb4fd3b9bc7daed691a5559249e8a16fee8b1bb0d0be71f3.
+//
+// Solidity: event CoreUnStaked(address indexed _sender, uint32 _coreIp, uint256 _amountStaked)
+func (_ChpRegistry *ChpRegistryFilterer) FilterCoreUnStaked(opts *bind.FilterOpts, _sender []common.Address) (*ChpRegistryCoreUnStakedIterator, error) {
+
+	var _senderRule []interface{}
+	for _, _senderItem := range _sender {
+		_senderRule = append(_senderRule, _senderItem)
+	}
+
+	logs, sub, err := _ChpRegistry.contract.FilterLogs(opts, "CoreUnStaked", _senderRule)
+	if err != nil {
+		return nil, err
+	}
+	return &ChpRegistryCoreUnStakedIterator{contract: _ChpRegistry.contract, event: "CoreUnStaked", logs: logs, sub: sub}, nil
+}
+
+// WatchCoreUnStaked is a free log subscription operation binding the contract event 0x341d92626b7f883cbb4fd3b9bc7daed691a5559249e8a16fee8b1bb0d0be71f3.
+//
+// Solidity: event CoreUnStaked(address indexed _sender, uint32 _coreIp, uint256 _amountStaked)
+func (_ChpRegistry *ChpRegistryFilterer) WatchCoreUnStaked(opts *bind.WatchOpts, sink chan<- *ChpRegistryCoreUnStaked, _sender []common.Address) (event.Subscription, error) {
+
+	var _senderRule []interface{}
+	for _, _senderItem := range _sender {
+		_senderRule = append(_senderRule, _senderItem)
+	}
+
+	logs, sub, err := _ChpRegistry.contract.WatchLogs(opts, "CoreUnStaked", _senderRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(ChpRegistryCoreUnStaked)
+				if err := _ChpRegistry.contract.UnpackLog(event, "CoreUnStaked", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1368,15 +1466,14 @@ func (it *ChpRegistryNodeStakeUpdatedIterator) Close() error {
 type ChpRegistryNodeStakeUpdated struct {
 	Sender       common.Address
 	NodeIp       uint32
-	PublicKey    [32]byte
 	AmountStaked *big.Int
 	Duration     *big.Int
 	Raw          types.Log // Blockchain specific contextual infos
 }
 
-// FilterNodeStakeUpdated is a free log retrieval operation binding the contract event 0x57d3f3c2bfc2821bf567c972a631d55e2067c8b6d496e49d03418537434b55a7.
+// FilterNodeStakeUpdated is a free log retrieval operation binding the contract event 0x32ea73b36321c1e1a1ab6d4c06e53a3118dceb49c9001e0af83f50764cdcd430.
 //
-// Solidity: event NodeStakeUpdated(address indexed _sender, uint32 _nodeIp, bytes32 _publicKey, uint256 _amountStaked, uint256 _duration)
+// Solidity: event NodeStakeUpdated(address indexed _sender, uint32 _nodeIp, uint256 _amountStaked, uint256 _duration)
 func (_ChpRegistry *ChpRegistryFilterer) FilterNodeStakeUpdated(opts *bind.FilterOpts, _sender []common.Address) (*ChpRegistryNodeStakeUpdatedIterator, error) {
 
 	var _senderRule []interface{}
@@ -1391,9 +1488,9 @@ func (_ChpRegistry *ChpRegistryFilterer) FilterNodeStakeUpdated(opts *bind.Filte
 	return &ChpRegistryNodeStakeUpdatedIterator{contract: _ChpRegistry.contract, event: "NodeStakeUpdated", logs: logs, sub: sub}, nil
 }
 
-// WatchNodeStakeUpdated is a free log subscription operation binding the contract event 0x57d3f3c2bfc2821bf567c972a631d55e2067c8b6d496e49d03418537434b55a7.
+// WatchNodeStakeUpdated is a free log subscription operation binding the contract event 0x32ea73b36321c1e1a1ab6d4c06e53a3118dceb49c9001e0af83f50764cdcd430.
 //
-// Solidity: event NodeStakeUpdated(address indexed _sender, uint32 _nodeIp, bytes32 _publicKey, uint256 _amountStaked, uint256 _duration)
+// Solidity: event NodeStakeUpdated(address indexed _sender, uint32 _nodeIp, uint256 _amountStaked, uint256 _duration)
 func (_ChpRegistry *ChpRegistryFilterer) WatchNodeStakeUpdated(opts *bind.WatchOpts, sink chan<- *ChpRegistryNodeStakeUpdated, _sender []common.Address) (event.Subscription, error) {
 
 	var _senderRule []interface{}
@@ -1502,17 +1599,16 @@ func (it *ChpRegistryNodeStakedIterator) Close() error {
 
 // ChpRegistryNodeStaked represents a NodeStaked event raised by the ChpRegistry contract.
 type ChpRegistryNodeStaked struct {
-	Sender        common.Address
-	NodeIp        uint32
-	NodePublicKey [32]byte
-	AmountStaked  *big.Int
-	Duration      *big.Int
-	Raw           types.Log // Blockchain specific contextual infos
+	Sender       common.Address
+	NodeIp       uint32
+	AmountStaked *big.Int
+	Duration     *big.Int
+	Raw          types.Log // Blockchain specific contextual infos
 }
 
-// FilterNodeStaked is a free log retrieval operation binding the contract event 0x6ee9d3f125e9b75fa08097b5127a413fdf38d61d26d24a0ba85cad76d4b1034d.
+// FilterNodeStaked is a free log retrieval operation binding the contract event 0xc5899fd6ff0e464059acc6a64cb5f0431b87509faa9bf9425fc5bbdda4ab71fa.
 //
-// Solidity: event NodeStaked(address indexed _sender, uint32 _nodeIp, bytes32 _nodePublicKey, uint256 _amountStaked, uint256 _duration)
+// Solidity: event NodeStaked(address indexed _sender, uint32 _nodeIp, uint256 _amountStaked, uint256 _duration)
 func (_ChpRegistry *ChpRegistryFilterer) FilterNodeStaked(opts *bind.FilterOpts, _sender []common.Address) (*ChpRegistryNodeStakedIterator, error) {
 
 	var _senderRule []interface{}
@@ -1527,9 +1623,9 @@ func (_ChpRegistry *ChpRegistryFilterer) FilterNodeStaked(opts *bind.FilterOpts,
 	return &ChpRegistryNodeStakedIterator{contract: _ChpRegistry.contract, event: "NodeStaked", logs: logs, sub: sub}, nil
 }
 
-// WatchNodeStaked is a free log subscription operation binding the contract event 0x6ee9d3f125e9b75fa08097b5127a413fdf38d61d26d24a0ba85cad76d4b1034d.
+// WatchNodeStaked is a free log subscription operation binding the contract event 0xc5899fd6ff0e464059acc6a64cb5f0431b87509faa9bf9425fc5bbdda4ab71fa.
 //
-// Solidity: event NodeStaked(address indexed _sender, uint32 _nodeIp, bytes32 _nodePublicKey, uint256 _amountStaked, uint256 _duration)
+// Solidity: event NodeStaked(address indexed _sender, uint32 _nodeIp, uint256 _amountStaked, uint256 _duration)
 func (_ChpRegistry *ChpRegistryFilterer) WatchNodeStaked(opts *bind.WatchOpts, sink chan<- *ChpRegistryNodeStaked, _sender []common.Address) (event.Subscription, error) {
 
 	var _senderRule []interface{}
@@ -1549,6 +1645,140 @@ func (_ChpRegistry *ChpRegistryFilterer) WatchNodeStaked(opts *bind.WatchOpts, s
 				// New log arrived, parse the event and forward to the user
 				event := new(ChpRegistryNodeStaked)
 				if err := _ChpRegistry.contract.UnpackLog(event, "NodeStaked", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ChpRegistryNodeUnStakedIterator is returned from FilterNodeUnStaked and is used to iterate over the raw logs and unpacked data for NodeUnStaked events raised by the ChpRegistry contract.
+type ChpRegistryNodeUnStakedIterator struct {
+	Event *ChpRegistryNodeUnStaked // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *ChpRegistryNodeUnStakedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(ChpRegistryNodeUnStaked)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(ChpRegistryNodeUnStaked)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *ChpRegistryNodeUnStakedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *ChpRegistryNodeUnStakedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// ChpRegistryNodeUnStaked represents a NodeUnStaked event raised by the ChpRegistry contract.
+type ChpRegistryNodeUnStaked struct {
+	Sender       common.Address
+	NodeIp       uint32
+	AmountStaked *big.Int
+	Raw          types.Log // Blockchain specific contextual infos
+}
+
+// FilterNodeUnStaked is a free log retrieval operation binding the contract event 0x7723f01f1f38e47e511a270774d4dcc884a882c51ec5b002a5a94995afcd1521.
+//
+// Solidity: event NodeUnStaked(address indexed _sender, uint32 _nodeIp, uint256 _amountStaked)
+func (_ChpRegistry *ChpRegistryFilterer) FilterNodeUnStaked(opts *bind.FilterOpts, _sender []common.Address) (*ChpRegistryNodeUnStakedIterator, error) {
+
+	var _senderRule []interface{}
+	for _, _senderItem := range _sender {
+		_senderRule = append(_senderRule, _senderItem)
+	}
+
+	logs, sub, err := _ChpRegistry.contract.FilterLogs(opts, "NodeUnStaked", _senderRule)
+	if err != nil {
+		return nil, err
+	}
+	return &ChpRegistryNodeUnStakedIterator{contract: _ChpRegistry.contract, event: "NodeUnStaked", logs: logs, sub: sub}, nil
+}
+
+// WatchNodeUnStaked is a free log subscription operation binding the contract event 0x7723f01f1f38e47e511a270774d4dcc884a882c51ec5b002a5a94995afcd1521.
+//
+// Solidity: event NodeUnStaked(address indexed _sender, uint32 _nodeIp, uint256 _amountStaked)
+func (_ChpRegistry *ChpRegistryFilterer) WatchNodeUnStaked(opts *bind.WatchOpts, sink chan<- *ChpRegistryNodeUnStaked, _sender []common.Address) (event.Subscription, error) {
+
+	var _senderRule []interface{}
+	for _, _senderItem := range _sender {
+		_senderRule = append(_senderRule, _senderItem)
+	}
+
+	logs, sub, err := _ChpRegistry.contract.WatchLogs(opts, "NodeUnStaked", _senderRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(ChpRegistryNodeUnStaked)
+				if err := _ChpRegistry.contract.UnpackLog(event, "NodeUnStaked", log); err != nil {
 					return err
 				}
 				event.Raw = log
