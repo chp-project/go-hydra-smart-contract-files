@@ -3,6 +3,7 @@ package ethcontracts
 import (
 	"context"
 	"crypto/ecdsa"
+	"fmt"
 	"math"
 	"math/big"
 
@@ -34,6 +35,7 @@ type EthClient struct {
 func NewClient(ethURL string, ethPrivateKey string, tokenContract string, registryContract string, logger log.Logger) (*EthClient, error) {
 	client, err := ethclient.Dial(ethURL)
 	if util.LoggerError(logger, err) != nil {
+		fmt.Println("Unable to connect to ethereum url")
 		return nil, err
 	}
 	return &EthClient{
@@ -350,7 +352,10 @@ func (eth *EthClient) WatchCoreStakeUpdatedEvents(handler coreUpdatedHandler, st
 
 //PrivateKeyToAddress : converts hex private key to eth address
 func PrivateKeyToAddress(privKey string) string {
-	fromPrivateKey, _ := crypto.HexToECDSA(privKey)
+	fromPrivateKey, err := crypto.HexToECDSA(privKey)
+	if util.LogError(err) != nil {
+		return ""
+	}
 	publicKey := fromPrivateKey.Public()
 	publicKeyECDSA, _ := publicKey.(*ecdsa.PublicKey)
 	address := crypto.PubkeyToAddress(*publicKeyECDSA).Hex()
