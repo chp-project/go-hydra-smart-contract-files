@@ -206,6 +206,30 @@ func (eth *EthClient) GetPastNodesStakeUpdatedEvents() ([]ChpRegistryNodeStakeUp
 	return nodeStructSlice, nil
 }
 
+//GetPastNodesUnstakeEvents : get past unstake events so they can be removed
+func (eth *EthClient) GetPastNodesUnstakeEvents() ([]ChpRegistryNodeUnStaked, error) {
+	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
+	registryInstance, err := NewChpRegistry(registryAddr, &eth.Client)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return []ChpRegistryNodeUnStaked{}, err
+	}
+	opt := &bind.FilterOpts{}
+	s := []common.Address{}
+	unStaked, err := registryInstance.FilterNodeUnStaked(opt, s)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return []ChpRegistryNodeUnStaked{}, err
+	}
+	nodeStructSlice := make([]ChpRegistryNodeUnStaked, 0)
+	notEmpty := true
+	for notEmpty {
+		notEmpty = unStaked.Next()
+		if notEmpty {
+			nodeStructSlice = append(nodeStructSlice, *unStaked.Event)
+		}
+	}
+	return nodeStructSlice, nil
+}
+
 //GetPastCoresStakeUpdatedEvents : gets past core stake events
 func (eth *EthClient) GetPastCoresStakeUpdatedEvents() ([]ChpRegistryCoreStakeUpdated, error) {
 	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
@@ -225,6 +249,30 @@ func (eth *EthClient) GetPastCoresStakeUpdatedEvents() ([]ChpRegistryCoreStakeUp
 		notEmpty = staked.Next()
 		if notEmpty {
 			nodeStructSlice = append(nodeStructSlice, *staked.Event)
+		}
+	}
+	return nodeStructSlice, nil
+}
+
+//GetPastCoresUnstakeEvents : get past unstake events so they can be removed
+func (eth *EthClient) GetPastCoresUnstakeEvents() ([]ChpRegistryCoreUnStaked, error) {
+	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
+	registryInstance, err := NewChpRegistry(registryAddr, &eth.Client)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return []ChpRegistryCoreUnStaked{}, err
+	}
+	opt := &bind.FilterOpts{}
+	s := []common.Address{}
+	unStaked, err := registryInstance.FilterCoreUnStaked(opt, s)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return []ChpRegistryCoreUnStaked{}, err
+	}
+	nodeStructSlice := make([]ChpRegistryCoreUnStaked, 0)
+	notEmpty := true
+	for notEmpty {
+		notEmpty = unStaked.Next()
+		if notEmpty {
+			nodeStructSlice = append(nodeStructSlice, *unStaked.Event)
 		}
 	}
 	return nodeStructSlice, nil
@@ -305,6 +353,36 @@ func (eth *EthClient) WatchNodeStakeUpdatedEvents(handler nodeUpdatedHandler, st
 	s := []common.Address{}
 	ch := make(chan *ChpRegistryNodeStakeUpdated)
 	sub, err := registryInstance.WatchNodeStakeUpdated(opt, ch, s)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+	for {
+		select {
+		case event := <-ch:
+			handler(*event)
+			break
+		case err := <-sub.Err():
+			eth.Logger.Error("Subscription broken")
+			return err
+		}
+	}
+}
+
+type nodeUnstakeHandler func(updated ChpRegistryNodeUnStaked) error
+
+//WatchNodeUnstakeEvents : watches for node unstaking events and passes them to the handler
+func (eth *EthClient) WatchNodeUnstakeEvents(handler nodeUnstakeHandler, startBlock big.Int) error {
+	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
+	registryInstance, err := NewChpRegistry(registryAddr, &eth.Client)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+	opt := &bind.WatchOpts{}
+	start := startBlock.Uint64()
+	opt.Start = &start
+	s := []common.Address{}
+	ch := make(chan *ChpRegistryNodeUnStaked)
+	sub, err := registryInstance.WatchNodeUnStaked(opt, ch, s)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
