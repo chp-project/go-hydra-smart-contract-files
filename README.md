@@ -1,3 +1,3 @@
 # go-hydra-smart-contract-files
 
-> more coming soon...
+Chainpoint Smart Contract artifacts. Mirrored in GCR for purposes of cloudbuild. 
