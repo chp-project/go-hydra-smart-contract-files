@@ -77,7 +77,8 @@ func (eth *EthClient) Mint(rewardCandidates []common.Address, rcHash []byte, sig
 	transactOps.GasPrice = gasPrice
 	var rcHashBytes [32]byte
 	copy(rcHashBytes[:], rcHash[:32])
-	_, err = tokenInstance.Mint(transactOps, rewardCandidates, rcHashBytes, sigs[0], sigs[1], sigs[2], sigs[3], sigs[4], sigs[5])
+	ethTx, err := tokenInstance.Mint(transactOps, rewardCandidates, rcHashBytes, sigs[0], sigs[1], sigs[2], sigs[3], sigs[4], sigs[5])
+	eth.Logger.Info(fmt.Sprintf("Mint Tx: %#v", ethTx))
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
