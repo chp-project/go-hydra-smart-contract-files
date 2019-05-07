@@ -7,8 +7,6 @@ import (
 	"math"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/core/types"
-
 	solsha3 "github.com/miguelmota/go-solidity-sha3"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
