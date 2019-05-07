@@ -51,10 +51,10 @@ func NewClient(ethURL string, ethPrivateKey string, tokenContract string, regist
 }
 
 //Mint : mints tokens for node reward candidates
-func (eth *EthClient) Mint(rewardCandidates []common.Address, rcHash []byte, sigs [][]byte) (*types.Transaction, error) {
+func (eth *EthClient) Mint(rewardCandidates []common.Address, rcHash []byte, sigs [][]byte) error {
 	tokenInstance, err := NewTNT(common.HexToAddress(eth.TokenContractAddr), &eth.Client)
 	if util.LoggerError(eth.Logger, err) != nil {
-		return nil, err
+		return err
 	}
 	privateKey, _ := crypto.HexToECDSA(eth.EthPrivateKey)
 	publicKey := privateKey.Public()
@@ -65,13 +65,13 @@ func (eth *EthClient) Mint(rewardCandidates []common.Address, rcHash []byte, sig
 	// Get nonce for fromAddress
 	nonce, err := eth.Client.PendingNonceAt(context.Background(), fromAddress)
 	if util.LoggerError(eth.Logger, err) != nil {
-		return nil, err
+		return err
 	}
 
 	// Get suggested gas price
 	gasPrice, err := eth.Client.SuggestGasPrice(context.Background())
 	if util.LoggerError(eth.Logger, err) != nil {
-		return nil, err
+		return err
 	}
 
 	/// New keyed transactor
@@ -82,12 +82,11 @@ func (eth *EthClient) Mint(rewardCandidates []common.Address, rcHash []byte, sig
 	transactOps.GasPrice = gasPrice
 	var rcHashBytes [32]byte
 	copy(rcHashBytes[:], rcHash[:32])
-	ethTx, err := tokenInstance.Mint(transactOps, rewardCandidates, rcHashBytes, sigs[0], sigs[1], sigs[2], sigs[3], sigs[4], sigs[5])
+	_, err = tokenInstance.Mint(transactOps, rewardCandidates, rcHashBytes, sigs[0], sigs[1], sigs[2], sigs[3], sigs[4], sigs[5])
 	if util.LoggerError(eth.Logger, err) != nil {
-		return nil, err
+		return err
 	}
-	eth.Logger.Info(fmt.Sprintf("Mint Tx: %#v", ethTx))
-	return ethTx, nil
+	return nil
 }
 
 //CheckEthBalance : Check Ethereum balance at a hex address
