@@ -216,13 +216,15 @@ func (eth *EthClient) GetPastNodesUnstakeEvents(startBlock big.Int) ([]ChpRegist
 }
 
 //GetPastCoresStakedEvents : gets past cores staking events
-func (eth *EthClient) GetPastCoresStakedEvents() ([]ChpRegistryCoreStaked, error) {
+func (eth *EthClient) GetPastCoresStakedEvents(startBlock big.Int) ([]ChpRegistryCoreStaked, error) {
 	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
 	registryInstance, err := NewChpRegistry(registryAddr, &eth.Client)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return []ChpRegistryCoreStaked{}, err
 	}
 	opt := &bind.FilterOpts{}
+	start := startBlock.Uint64()
+	opt.Start = start
 	s := []common.Address{}
 	staked, err := registryInstance.FilterCoreStaked(opt, s)
 	if util.LoggerError(eth.Logger, err) != nil {
@@ -240,13 +242,15 @@ func (eth *EthClient) GetPastCoresStakedEvents() ([]ChpRegistryCoreStaked, error
 }
 
 //GetPastCoresStakeUpdatedEvents : gets past core stake events
-func (eth *EthClient) GetPastCoresStakeUpdatedEvents() ([]ChpRegistryCoreStakeUpdated, error) {
+func (eth *EthClient) GetPastCoresStakeUpdatedEvents(startBlock big.Int) ([]ChpRegistryCoreStakeUpdated, error) {
 	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
 	registryInstance, err := NewChpRegistry(registryAddr, &eth.Client)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return []ChpRegistryCoreStakeUpdated{}, err
 	}
 	opt := &bind.FilterOpts{}
+	start := startBlock.Uint64()
+	opt.Start = start
 	s := []common.Address{}
 	staked, err := registryInstance.FilterCoreStakeUpdated(opt, s)
 	if util.LoggerError(eth.Logger, err) != nil {
@@ -264,13 +268,15 @@ func (eth *EthClient) GetPastCoresStakeUpdatedEvents() ([]ChpRegistryCoreStakeUp
 }
 
 //GetPastCoresUnstakeEvents : get past unstake events so they can be removed
-func (eth *EthClient) GetPastCoresUnstakeEvents() ([]ChpRegistryCoreUnStaked, error) {
+func (eth *EthClient) GetPastCoresUnstakeEvents(startBlock big.Int) ([]ChpRegistryCoreUnStaked, error) {
 	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
 	registryInstance, err := NewChpRegistry(registryAddr, &eth.Client)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return []ChpRegistryCoreUnStaked{}, err
 	}
 	opt := &bind.FilterOpts{}
+	start := startBlock.Uint64()
+	opt.Start = start
 	s := []common.Address{}
 	unStaked, err := registryInstance.FilterCoreUnStaked(opt, s)
 	if util.LoggerError(eth.Logger, err) != nil {
