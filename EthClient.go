@@ -162,14 +162,28 @@ func (eth *EthClient) HighestBlock() (*big.Int, error) {
 	return header.Number, nil
 }
 
-//GetLastMintedAt : returns the ethereum block of the last minting event. Used for timing mint events
-func (eth *EthClient) GetLastMintedAt() (*big.Int, error) {
+//GetNodeLastMintedAt : returns the ethereum block of the last minting event. Used for timing mint events
+func (eth *EthClient) GetNodeLastMintedAt() (*big.Int, error) {
 	tokenAddr := common.HexToAddress(eth.TokenContractAddr)
 	tokenInstance, err := NewTNT(tokenAddr, &eth.Client)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
 	balance, err := tokenInstance.NodeLastMintedAtBlock(&bind.CallOpts{})
+	if util.LoggerError(eth.Logger, err) != nil {
+		return nil, err
+	}
+	return balance, nil
+}
+
+//GetCoreLastMintedAt : returns the ethereum block of the last minting event. Used for timing mint events
+func (eth *EthClient) GetCoreLastMintedAt() (*big.Int, error) {
+	tokenAddr := common.HexToAddress(eth.TokenContractAddr)
+	tokenInstance, err := NewTNT(tokenAddr, &eth.Client)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return nil, err
+	}
+	balance, err := tokenInstance.CoreLastMintedAtBlock(&bind.CallOpts{})
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
@@ -393,6 +407,134 @@ func (eth *EthClient) WatchCoreStakeEvents(handler coreHandler, startBlock big.I
 		}
 	}
 }
+
+type nodeUpdatedHandler func(updated ChpRegistryNodeStakeUpdated) error
+
+//WatchNodeStakeUpdatedEvents : watches for node stake updates and passes them to the handler method
+func (eth *EthClient) WatchNodeStakeUpdatedEvents(handler nodeUpdatedHandler, startBlock big.Int) error {
+	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
+	registryInstance, err := NewChpRegistry(registryAddr, &eth.Client)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+	opt := &bind.WatchOpts{}
+	start := startBlock.Uint64()
+	opt.Start = &start
+	s := []common.Address{}
+	ch := make(chan *ChpRegistryNodeStakeUpdated)
+	sub, err := registryInstance.WatchNodeStakeUpdated(opt, ch, s)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+	for {
+		select {
+		case event := <-ch:
+			handler(*event)
+			break
+		case err := <-sub.Err():
+			eth.Logger.Error("Subscription broken")
+			return err
+		}
+	}
+}
+
+type nodeUnstakeHandler func(updated ChpRegistryNodeUnStaked) error
+
+//WatchNodeUnstakeEvents : watches for node unstaking events and passes them to the handler
+func (eth *EthClient) WatchNodeUnstakeEvents(handler nodeUnstakeHandler, startBlock big.Int) error {
+	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
+	registryInstance, err := NewChpRegistry(registryAddr, &eth.Client)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+	opt := &bind.WatchOpts{}
+	start := startBlock.Uint64()
+	opt.Start = &start
+	s := []common.Address{}
+	ch := make(chan *ChpRegistryNodeUnStaked)
+	sub, err := registryInstance.WatchNodeUnStaked(opt, ch, s)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+	for {
+		select {
+		case event := <-ch:
+			handler(*event)
+			break
+		case err := <-sub.Err():
+			eth.Logger.Error("Subscription broken")
+			return err
+		}
+	}
+}
+
+type coreUpdatedHandler func(updated ChpRegistryCoreStakeUpdated) error
+
+//WatchCoreStakeUpdatedEvents : watches for core stake updates and passes them to the handler method
+func (eth *EthClient) WatchCoreStakeUpdatedEvents(handler coreUpdatedHandler, startBlock big.Int) error {
+	registryAddr := common.HexToAddress(eth.RegistryContractAddr)
+	registryInstance, err := NewChpRegistry(registryAddr, &eth.Client)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+	opt := &bind.WatchOpts{}
+	start := startBlock.Uint64()
+	opt.Start = &start
+	s := []common.Address{}
+	ch := make(chan *ChpRegistryCoreStakeUpdated)
+	sub, err := registryInstance.WatchCoreStakeUpdated(opt, ch, s)
+	if util.LoggerError(eth.Logger, err) != nil {
+		return err
+	}
+	for {
+		select {
+		case event := <-ch:
+			handler(*event)
+			break
+		case err := <-sub.Err():
+			eth.Logger.Error("Subscription broken")
+			return err
+		}
+	}
+}
+
+//PrivateKeyToAddress : converts hex private key to eth address
+func PrivateKeyToAddress(privKey string) string {
+	fromPrivateKey, err := crypto.HexToECDSA(privKey)
+	if util.LogError(err) != nil {
+		return ""
+	}
+	publicKey := fromPrivateKey.Public()
+	publicKeyECDSA, _ := publicKey.(*ecdsa.PublicKey)
+	address := crypto.PubkeyToAddress(*publicKeyECDSA).Hex()
+	return address
+}
+
+//AddressesToHash : converts hex addresses to hash for minting
+func AddressesToHash(addrs []common.Address) []byte {
+	addrStrs := make([]string, 0)
+	for _, addr := range addrs {
+		addrStrs = append(addrStrs, addr.Hex())
+	}
+	hashAddr := solsha3.SoliditySHA3(
+		// types
+		[]string{"address[]"},
+		// values
+		[]interface{}{addrStrs},
+	)
+	return hashAddr
+}
+
+//SignMsg : produces ethereum signature of msg using corresponding privKey
+func SignMsg(msg []byte, privKey string) ([]byte, error) {
+	privateKey, err := crypto.HexToECDSA(privKey)
+	if err != nil {
+		return []byte{}, err
+	}
+	signature, err := crypto.Sign(msg, privateKey)
+	return signature, err
+}
+
 
 type nodeUpdatedHandler func(updated ChpRegistryNodeStakeUpdated) error
 
