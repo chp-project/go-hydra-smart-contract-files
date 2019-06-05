@@ -80,10 +80,11 @@ func (eth *EthClient) MintNodes(rewardCandidates []common.Address, rcHash []byte
 	transactOps.GasPrice = gasPrice
 	var rcHashBytes [32]byte
 	copy(rcHashBytes[:], rcHash[:32])
-	_, err = tokenInstance.Mint(transactOps, rewardCandidates, rcHashBytes, sigs[0], sigs[1], sigs[2], sigs[3], sigs[4], sigs[5])
+	tx, err := tokenInstance.Mint(transactOps, rewardCandidates, rcHashBytes, sigs[0], sigs[1], sigs[2], sigs[3], sigs[4], sigs[5])
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
+	eth.Logger.Info(fmt.Sprintf("NodeMint: Issued ETH Tx: %#v", *tx))
 	return nil
 }
 
@@ -119,10 +120,11 @@ func (eth *EthClient) MintCores(rewardCandidates []common.Address, rcHash []byte
 	transactOps.GasPrice = gasPrice
 	var rcHashBytes [32]byte
 	copy(rcHashBytes[:], rcHash[:32])
-	_, err = tokenInstance.MintCores(transactOps, rewardCandidates, rcHashBytes, sigs)
+	tx, err := tokenInstance.MintCores(transactOps, rewardCandidates, rcHashBytes, sigs)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
+	eth.Logger.Info(fmt.Sprintf("CoreMint: Issued ETH Tx: %#v", *tx))
 	return nil
 }
 
