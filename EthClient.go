@@ -116,7 +116,7 @@ func (eth *EthClient) MintCores(rewardCandidates []common.Address, rcHash []byte
 	transactOps := bind.NewKeyedTransactor(privateKey)
 	transactOps.Nonce = big.NewInt(int64(nonce))
 	transactOps.Value = big.NewInt(0)
-	transactOps.GasLimit = uint64(300000)
+	transactOps.GasLimit = uint64(400000)
 	transactOps.GasPrice = gasPrice
 	var rcHashBytes [32]byte
 	copy(rcHashBytes[:], rcHash[:32])
