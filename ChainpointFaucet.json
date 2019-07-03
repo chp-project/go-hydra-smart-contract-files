@@ -4340,8 +4340,8 @@
         }
       },
       "links": {},
-      "address": "0x5141a20078DC7743A98292c69286391B61704ECe",
-      "transactionHash": "0x6dea8342117dda7023e312e98e18192349bc00cd3d2f771b22da59a994f38c5e"
+      "address": "0x1ae9b4AA9dfA037e26652e7cD2955b4247C37080",
+      "transactionHash": "0x74315ccc4b5e3c2c6dca9041823e82f7f66c251d6d2ba4fa631f81100b38eb14"
     },
     "5777": {
       "events": {
@@ -4422,7 +4422,7 @@
     }
   },
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-07-03T03:40:16.946Z",
+  "updatedAt": "2019-07-03T18:04:20.552Z",
   "devdoc": {
     "details": "Faucet contract for $TKN & the Chainpoint Network ",
     "methods": {

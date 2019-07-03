@@ -27531,8 +27531,8 @@
         }
       },
       "links": {},
-      "address": "0x0574EDbeDC2c2f7675581B60372Daa10dDD2ad5F",
-      "transactionHash": "0x6141b5406548817cb2d54ca4a7b9606bc1687d7c2b04e736df07b4294e0d0ffd"
+      "address": "0xE05da394fAE477De2eE6F64d5C64cf1D8F67a803",
+      "transactionHash": "0x7d404354c2c66d1865a3c99f6f5384f9607c0bdb36d0493fd29099621dbbd5ee"
     },
     "5777": {
       "events": {
@@ -27814,7 +27814,7 @@
     }
   },
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-07-03T03:41:39.143Z",
+  "updatedAt": "2019-07-03T18:06:31.854Z",
   "devdoc": {
     "methods": {
       "constructor": {
