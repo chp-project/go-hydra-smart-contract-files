@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"math"
 	"math/big"
+	"time"
 
 	solsha3 "github.com/miguelmota/go-solidity-sha3"
 
@@ -60,14 +61,21 @@ func (eth *EthClient) MintNodes(rewardCandidates []common.Address, rcHash []byte
 
 	fromAddress := crypto.PubkeyToAddress(*publicKeyECDSA)
 
+	nonceCtx, nonceCancel := context.WithTimeout(context.Background(), 20*time.Second)
+	gasCtx, gasCancel := context.WithTimeout(context.Background(), 20*time.Second)
+	txCtx, txCancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer nonceCancel()
+	defer gasCancel()
+	defer txCancel()
+
 	// Get nonce for fromAddress
-	nonce, err := eth.Client.PendingNonceAt(context.Background(), fromAddress)
+	nonce, err := eth.Client.PendingNonceAt(nonceCtx, fromAddress)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
 
 	// Get suggested gas price
-	gasPrice, err := eth.Client.SuggestGasPrice(context.Background())
+	gasPrice, err := eth.Client.SuggestGasPrice(gasCtx)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
@@ -78,6 +86,7 @@ func (eth *EthClient) MintNodes(rewardCandidates []common.Address, rcHash []byte
 	transactOps.Value = big.NewInt(0)
 	transactOps.GasLimit = uint64(300000)
 	transactOps.GasPrice = gasPrice
+	transactOps.Context = txCtx
 	var rcHashBytes [32]byte
 	copy(rcHashBytes[:], rcHash[:32])
 	tx, err := tokenInstance.Mint(transactOps, rewardCandidates, rcHashBytes, sigs[0], sigs[1], sigs[2], sigs[3], sigs[4], sigs[5])
@@ -100,14 +109,21 @@ func (eth *EthClient) MintCores(rewardCandidates []common.Address, rcHash []byte
 
 	fromAddress := crypto.PubkeyToAddress(*publicKeyECDSA)
 
+	nonceCtx, nonceCancel := context.WithTimeout(context.Background(), 20*time.Second)
+	gasCtx, gasCancel := context.WithTimeout(context.Background(), 20*time.Second)
+	txCtx, txCancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer nonceCancel()
+	defer gasCancel()
+	defer txCancel()
+
 	// Get nonce for fromAddress
-	nonce, err := eth.Client.PendingNonceAt(context.Background(), fromAddress)
+	nonce, err := eth.Client.PendingNonceAt(nonceCtx, fromAddress)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
 
 	// Get suggested gas price
-	gasPrice, err := eth.Client.SuggestGasPrice(context.Background())
+	gasPrice, err := eth.Client.SuggestGasPrice(gasCtx)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
@@ -118,6 +134,7 @@ func (eth *EthClient) MintCores(rewardCandidates []common.Address, rcHash []byte
 	transactOps.Value = big.NewInt(0)
 	transactOps.GasLimit = uint64(800000)
 	transactOps.GasPrice = gasPrice
+	transactOps.Context = txCtx
 	var rcHashBytes [32]byte
 	copy(rcHashBytes[:], rcHash[:32])
 	tx, err := tokenInstance.MintCores(transactOps, rewardCandidates, rcHashBytes, sigs)
@@ -131,7 +148,9 @@ func (eth *EthClient) MintCores(rewardCandidates []common.Address, rcHash []byte
 //CheckEthBalance : Check Ethereum balance at a hex address
 func (eth *EthClient) CheckEthBalance(addr string) (*big.Float, error) {
 	address := common.HexToAddress(addr)
-	balance, err := eth.Client.BalanceAt(context.Background(), address, nil)
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	balance, err := eth.Client.BalanceAt(ctx, address, nil)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
@@ -148,7 +167,9 @@ func (eth *EthClient) TokenBalanceOf(account string) (*big.Int, error) {
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
-	balance, err := tokenInstance.BalanceOf(&bind.CallOpts{}, common.HexToAddress(account))
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	balance, err := tokenInstance.BalanceOf(&bind.CallOpts{Context: ctx}, common.HexToAddress(account))
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
@@ -157,7 +178,9 @@ func (eth *EthClient) TokenBalanceOf(account string) (*big.Int, error) {
 
 //HighestBlock : Gets latest ethereum block
 func (eth *EthClient) HighestBlock() (*big.Int, error) {
-	header, err := eth.Client.HeaderByNumber(context.Background(), nil)
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	header, err := eth.Client.HeaderByNumber(ctx, nil)
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
@@ -171,7 +194,9 @@ func (eth *EthClient) GetNodeLastMintedAt() (*big.Int, error) {
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
-	balance, err := tokenInstance.NodeLastMintedAtBlock(&bind.CallOpts{})
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	balance, err := tokenInstance.NodeLastMintedAtBlock(&bind.CallOpts{Context: ctx})
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
@@ -185,7 +210,9 @@ func (eth *EthClient) GetCoreLastMintedAt() (*big.Int, error) {
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
-	balance, err := tokenInstance.CoreLastMintedAtBlock(&bind.CallOpts{})
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	balance, err := tokenInstance.CoreLastMintedAtBlock(&bind.CallOpts{Context: ctx})
 	if util.LoggerError(eth.Logger, err) != nil {
 		return nil, err
 	}
@@ -199,7 +226,9 @@ func (eth *EthClient) GetPastNodesStakedEvents(startBlock big.Int) ([]ChpRegistr
 	if util.LoggerError(eth.Logger, err) != nil {
 		return []ChpRegistryNodeStaked{}, err
 	}
-	opt := &bind.FilterOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.FilterOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = start
 	s := []common.Address{}
@@ -225,7 +254,9 @@ func (eth *EthClient) GetPastNodesStakeUpdatedEvents(startBlock big.Int) ([]ChpR
 	if util.LoggerError(eth.Logger, err) != nil {
 		return []ChpRegistryNodeStakeUpdated{}, err
 	}
-	opt := &bind.FilterOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.FilterOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = start
 	s := []common.Address{}
@@ -251,7 +282,9 @@ func (eth *EthClient) GetPastNodesUnstakeEvents(startBlock big.Int) ([]ChpRegist
 	if util.LoggerError(eth.Logger, err) != nil {
 		return []ChpRegistryNodeUnStaked{}, err
 	}
-	opt := &bind.FilterOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.FilterOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = start
 	s := []common.Address{}
@@ -277,7 +310,9 @@ func (eth *EthClient) GetPastCoresStakedEvents(startBlock big.Int) ([]ChpRegistr
 	if util.LoggerError(eth.Logger, err) != nil {
 		return []ChpRegistryCoreStaked{}, err
 	}
-	opt := &bind.FilterOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.FilterOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = start
 	s := []common.Address{}
@@ -303,7 +338,9 @@ func (eth *EthClient) GetPastCoresStakeUpdatedEvents(startBlock big.Int) ([]ChpR
 	if util.LoggerError(eth.Logger, err) != nil {
 		return []ChpRegistryCoreStakeUpdated{}, err
 	}
-	opt := &bind.FilterOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.FilterOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = start
 	s := []common.Address{}
@@ -329,7 +366,9 @@ func (eth *EthClient) GetPastCoresUnstakeEvents(startBlock big.Int) ([]ChpRegist
 	if util.LoggerError(eth.Logger, err) != nil {
 		return []ChpRegistryCoreUnStaked{}, err
 	}
-	opt := &bind.FilterOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.FilterOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = start
 	s := []common.Address{}
@@ -358,7 +397,9 @@ func (eth *EthClient) WatchNodeStakeEvents(handler nodeHandler, startBlock big.I
 		eth.Logger.Info("smart contract connection failed")
 		return err
 	}
-	opt := &bind.WatchOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.WatchOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = &start
 	s := []common.Address{}
@@ -389,7 +430,9 @@ func (eth *EthClient) WatchCoreStakeEvents(handler coreHandler, startBlock big.I
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
-	opt := &bind.WatchOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.WatchOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = &start
 	s := []common.Address{}
@@ -419,7 +462,9 @@ func (eth *EthClient) WatchNodeStakeUpdatedEvents(handler nodeUpdatedHandler, st
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
-	opt := &bind.WatchOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.WatchOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = &start
 	s := []common.Address{}
@@ -449,7 +494,9 @@ func (eth *EthClient) WatchNodeUnstakeEvents(handler nodeUnstakeHandler, startBl
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
-	opt := &bind.WatchOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.WatchOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = &start
 	s := []common.Address{}
@@ -479,7 +526,9 @@ func (eth *EthClient) WatchCoreStakeUpdatedEvents(handler coreUpdatedHandler, st
 	if util.LoggerError(eth.Logger, err) != nil {
 		return err
 	}
-	opt := &bind.WatchOpts{}
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	opt := &bind.WatchOpts{Context: ctx}
 	start := startBlock.Uint64()
 	opt.Start = &start
 	s := []common.Address{}
