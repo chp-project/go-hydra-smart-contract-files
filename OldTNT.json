@@ -9034,8 +9034,8 @@
         }
       },
       "links": {},
-      "address": "0xB339D3212A6A3e8dd45adE442dCd2373dFF79B78",
-      "transactionHash": "0xa0b53335a7456317af826a305b66abb3dfc2d9ccc5388d4e9fb2ed635888ebde"
+      "address": "0x961c67471992A2c987D8F17a2E5Ef17AB474642C",
+      "transactionHash": "0x2f586fbdc7b77254b49ab4f2485ea6f47364d031ba5fdfb84f8f4ebbf2f283a5"
     },
     "5777": {
       "events": {
@@ -9162,7 +9162,7 @@
     }
   },
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-07-14T00:11:35.752Z",
+  "updatedAt": "2019-07-14T00:41:21.885Z",
   "devdoc": {
     "details": "ERC20 (OLD) Tierion Network Token (TNT) * TNT Tokens are divisible by 1e8 (100,000,000) base units referred to as 'Grains'. * TNT are displayed using 8 decimal places of precision. * 1 TNT is equivalent to:  100000000 == 1 * 10**8 == 1e8 == One Hundred Million Grains * 1 Billion TNT (total supply) is equivalent to:  100000000000000000 == 1000000000 * 10**8 == 1e17 == One Hundred Quadrillion Grains * All initial TNT Grains are assigned to the creator of this contract. ",
     "methods": {
